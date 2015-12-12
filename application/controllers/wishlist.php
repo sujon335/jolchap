@@ -13,7 +13,7 @@
  */
 class Wishlist extends CI_Controller {
     //put your code here
-    public function index(){
+        public function index(){
         $header_data['header_name'] ="wishlist"; 
         $this->load->view("common/header", $header_data);
         $this->load->view("wishlist/wishlist_body");
