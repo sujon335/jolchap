@@ -60,7 +60,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-lg btn-block btn-primary"><b>Visit Card Shop</b></button>
+                        <a href="<?php echo base_url(); ?>index.php/shop/view" class="btn btn-lg btn-block btn-primary"><b>Visit Card Shop</b></a>
                     </div>
                 </div>
             </div>
@@ -82,8 +82,10 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="<?php echo base_url(); ?>uploads/<?php echo $product['featured_image']; ?>"
+                                            <a href="<?php echo base_url(); ?>index.php/product_details/show/<?php echo $product['product_id']; ?>">
+                                                <img src="<?php echo base_url(); ?>uploads/<?php echo $product['featured_image']; ?>"
                                                  height="232px" width="auto" alt="" />
+                                            </a>
                                             <h2>$56</h2>
                                             <p><?php echo $product['product_name']; ?></p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-edit"></i>Customize</a>
@@ -109,8 +111,15 @@
 
                         </div><!--features_items-->
 
-                        <div class="recommended_items"><!--recommended_items-->
-                            <h2 class="title text-center">recommended items</h2>
+                        <div class="recommended_items" style=" padding-bottom: 20px;"><!--recommended_items-->
+                           
+                            <div class="row">
+                                <div class="col-sm-4 col-centered">
+                             <a href="<?php echo base_url(); ?>index.php/shop/view"
+                                class="btn btn-lg btn-block btn-primary"><b>View More Cards</b></a>
+                                </div>
+                            </div>
+                   
 
                         </div><!--/recommended_items-->
 

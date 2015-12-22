@@ -38,6 +38,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-57-precomposed.png">
+        
+        <!-- custom css -->
+        <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
     </head><!--/head-->
 
     <body>
@@ -99,6 +102,12 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="<?php echo base_url(); ?>index.php/myCards"
+                                           <?php if(isset($header_name) && $header_name == 'myCards') echo 'class="active"';?>>
+                                            <i class="fa fa-shopping-cart"></i> My Cards
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="<?php echo base_url(); ?>index.php/login"
                                            <?php if(isset($header_name) && $header_name == 'login') echo 'class="active"';?>>
                                             <i class="fa fa-lock"></i> Login
@@ -131,7 +140,7 @@
                                             <i class="fa fa-home"></i> Home</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/shop"
+                                        <a href="<?php echo base_url(); ?>index.php/shop/view"
                                            <?php if(isset($header_name) && $header_name=="shop") echo 'class="active"'; ?>>
                                                 <i class="fa fa-shopping-basket"></i> Shop</a>
                                     </li> 

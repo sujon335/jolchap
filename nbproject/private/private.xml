@@ -4,9 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Applications/XAMPP/htdocs/jolchap/application/views/home/home_body.php</file>
-            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/home.php</file>
-            <file>file:/Applications/XAMPP/htdocs/jolchap/application/models/products.php</file>
-            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/admin.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/auth.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/views/common/header.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/models/users.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/views/my_cards/my_cards_body.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/login.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/cart.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/views/login/login_body.php</file>
+            <file>file:/Applications/XAMPP/htdocs/jolchap/application/controllers/myCards.php</file>
         </group>
     </open-files>
 </project-private>
