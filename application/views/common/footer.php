@@ -42,6 +42,31 @@
         <script src="<?php echo base_url(); ?>assets/js/price-range.js"></script>
         <script src="<?php echo base_url(); ?>assets/js/jquery.prettyPhoto.js"></script>
         <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
+        <script>
+            $(".wishlist").click(function(){
+                
+            var list_id = "#li-"+this.id;
+            var elementContent = this;
+            if($(list_id).hasClass("active")){
+                $.ajax({url: "<?php echo base_url(); ?>index.php/wishlist/delete/"+this.id, success: function(result){
+                    //alert(result); 
+                    if(result == "success"){
+                        $(list_id).removeClass("active");
+                        $(elementContent).html('<i class="fa fa-plus-square"></i>Add to Wishlist');
+                    }
+                }});
+            }
+            else{
+                $.ajax({url: "<?php echo base_url(); ?>index.php/wishlist/add/"+this.id, success: function(result){
+                    //alert(result);    
+                    if(result == "success"){
+                            $(list_id).addClass("active");
+                            $(elementContent).html('<i class="fa fa-close"></i>Remove from Wishlist');
+                    }
+                }});
+            }   
+            });
+        </script>
     </body>
 </html>
 

@@ -1,11 +1,9 @@
 <?php
-
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +21,9 @@
         <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/css/responsive.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        
+
         <!-- conditional includes -->
-        <?php if(isset($header_name) && $header_name=="login"): ?>
+        <?php if (isset($header_name) && $header_name == "login"): ?>
             <link href="<?php echo base_url(); ?>assets/bootstrap-social-gh-pages/bootstrap-social.css" rel="stylesheet">
         <?php endif; ?>
         <!-- conditional includes end-->
@@ -38,11 +36,33 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-57-precomposed.png">
-        
+
         <!-- custom css -->
         <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
-    </head><!--/head-->
 
+
+
+
+        <!-- BEGIN Pre-requisites -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+        </script>
+        <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+        </script>
+        <!-- END Pre-requisites -->
+        <!-- Continuing the <head> section -->
+        <script>
+            function start() {
+                gapi.load('auth2', function () {
+                    auth2 = gapi.auth2.init({
+                        client_id: '1006637573377-nvtrdhhf7kia3nk7quu44u7dt4u4l54t.apps.googleusercontent.com',
+                        // Scopes to request in addition to 'profile' and 'email'
+                        //scope: 'additional_scope'
+                    });
+                });
+            }
+
+        </script>
+    </head>
     <body>
         <header id="header"><!--header-->
             <div class="header_top"><!--header_top-->
@@ -78,38 +98,38 @@
                             <div class="logo pull-left">
                                 <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/home/logo.png" height="39px" width="auto" alt="" /></a>
                             </div>
-                            
+
                         </div>
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                   
+
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/wishlist"
-                                           <?php if(isset($header_name) && $header_name == 'wishlist') echo 'class="active"';?>>
+                                           <?php if (isset($header_name) && $header_name == 'wishlist') echo 'class="active"'; ?>>
                                             <i class="fa fa-star"></i> Wishlist
                                         </a>
                                     </li>
                                     <li>
-                                         <a href="<?php echo base_url(); ?>index.php/checkout"
-                                           <?php if(isset($header_name) && $header_name == 'checkout') echo 'class="active"';?>>
+                                        <a href="<?php echo base_url(); ?>index.php/checkout"
+                                           <?php if (isset($header_name) && $header_name == 'checkout') echo 'class="active"'; ?>>
                                             <i class="fa fa-crosshairs"></i> Checkout</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/cart"
-                                           <?php if(isset($header_name) && $header_name == 'cart') echo 'class="active"';?>>
+                                           <?php if (isset($header_name) && $header_name == 'cart') echo 'class="active"'; ?>>
                                             <i class="fa fa-shopping-cart"></i> Cart
                                         </a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/myCards"
-                                           <?php if(isset($header_name) && $header_name == 'myCards') echo 'class="active"';?>>
+                                           <?php if (isset($header_name) && $header_name == 'myCards') echo 'class="active"'; ?>>
                                             <i class="fa fa-shopping-cart"></i> My Cards
                                         </a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/login"
-                                           <?php if(isset($header_name) && $header_name == 'login') echo 'class="active"';?>>
+                                           <?php if (isset($header_name) && $header_name == 'login') echo 'class="active"'; ?>>
                                             <i class="fa fa-lock"></i> Login
                                         </a>
                                     </li>
@@ -136,20 +156,20 @@
                                 <ul class="nav navbar-nav collapse navbar-collapse">
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/home" 
-                                        <?php if(isset($header_name) && $header_name=="home") echo 'class="active"'; ?>>
+                                           <?php if (isset($header_name) && $header_name == "home") echo 'class="active"'; ?>>
                                             <i class="fa fa-home"></i> Home</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/shop/view"
-                                           <?php if(isset($header_name) && $header_name=="shop") echo 'class="active"'; ?>>
-                                                <i class="fa fa-shopping-basket"></i> Shop</a>
+                                           <?php if (isset($header_name) && $header_name == "shop") echo 'class="active"'; ?>>
+                                            <i class="fa fa-shopping-basket"></i> Shop</a>
                                     </li> 
                                     <li>
                                         <a href="#"><i class="fa fa-info"></i> Our Service</a>
                                     </li> 
                                     <li>
-                                         <a href="<?php echo base_url(); ?>index.php/contactUs"
-                                           <?php if(isset($header_name) && $header_name=="contact_us") echo 'class="active"'; ?>>
+                                        <a href="<?php echo base_url(); ?>index.php/contactUs"
+                                           <?php if (isset($header_name) && $header_name == "contact_us") echo 'class="active"'; ?>>
                                             <i class="fa fa-question-circle"></i> Contact Us</a>
                                     </li>
                                 </ul>

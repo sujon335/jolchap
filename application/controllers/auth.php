@@ -45,6 +45,14 @@ class Auth extends CI_Controller {
     }
     
     public function login(){
+        /*
+         * facebook data
+         */
+        
+        
+        /*
+         * load helpers
+         */
         $this->load->helper('form');
         $this->load->library('form_validation');
         
@@ -63,11 +71,14 @@ class Auth extends CI_Controller {
                 $user_data = $this->users->get_user_by_email($credentials['email']);
                 
                 $auth_data = array(
+                    'user_id' => $user_data['id'],
                     'email' => $user_data['email'],
-                    'name' => $user_data['name']
+                    'name' => $user_data['name'],
+                    'fb_id' => $user_data['fb_id'],
+                    'gmail_id' => $user_data['gmail_id']
                 );
                 
-                $this->session->set_userdata($user_data);
+                $this->session->set_userdata($auth_data);
                 
                 redirect('myCards');
             }
@@ -84,4 +95,70 @@ class Auth extends CI_Controller {
         
         //redirect('login');
     }
+    
+    public function facebook_login(){
+        /*
+         * fb data
+         */
+        $fb_user = $this->facebook->get_user();
+        $header_data['fb_user'] = $fb_user;
+        
+        /*
+         * load model
+         */
+        $this->load->model("users");
+        
+        if(isset($fb_user['id']) && $fb_user['id'] != ""){
+            $user['name'] = $fb_user['name'];
+            $user['fb_id'] = $fb_user['id'];
+            $this->users->insert($user);
+            
+            $user_data = $this->users->get_user_by_fb_id($user['fb_id']);
+            
+            $auth_data = array(
+                    'user_id' => $user_data['id'],
+                    'email' => $user_data['email'],
+                    'name' => $user_data['name'],
+                    'fb_id' => $user_data['fb_id'],
+                    'gmail_id' => $user_data['gmail_id']
+            );
+                
+            $this->session->set_userdata($auth_data);
+            
+            redirect("myCards");
+        }
+        else{
+            redirect("login");
+        }
+        
+        /*
+         * load model
+         */
+    }
+    
+    
+    public function google_login(){
+        $this->load->library('google');
+        $token = $this->input->get('code');
+        $this->load->library("google");
+        $client_id = '1006637573377-nvtrdhhf7kia3nk7quu44u7dt4u4l54t.apps.googleusercontent.com';
+        $client_secret = '9hwmVOkkpzbloXsk5C-YMLLY';
+        $redirect_uri = 'http://localhost/jolchap/index.php/auth/google_login?';
+        $simple_api_key = 'AIzaSyC8RCGUGZdwMwfN4zAaEKxqH0JjfLGTXrc';
+        
+        
+        
+        $this->google->setApplicationName("PHP Google OAuth Login Example");
+        $this->google->setClientId($client_id);
+        $this->google->setClientSecret($client_secret);
+        $this->google->setRedirectUri($redirect_uri);
+        $this->google->setDeveloperKey($simple_api_key);
+        $this->google->addScope("https://www.googleapis.com/auth/userinfo.email");
+        
+        $this->google->authenticate($token);
+        $accessToken = $this->google->getAccessToken();
+        
+        var_dump($accessToken);
+    }
 }
+

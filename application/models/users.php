@@ -14,15 +14,37 @@
 class users extends CI_Model{
     //put your code here
     public function insert($user){
-        $user_data = $this->get_user_by_email($user['email']);
+        if(isset($user['email']) && $user['email'] != ""){
+            $user_data = $this->get_user_by_email($user['email']);
+        }
+        else if(isset($user['fb_id']) && $user['fb_id'] != ""){
+            $user_data = $this->get_user_by_fb_id($user['fb_id']);
+        }
+        else if(isset($user['gmail_id']) && $user['gmail_id'] != ""){
+            $user_data = $this->get_user_by_gmail_id($user['gmail_id']);
+        }
         
         if(isset($user_data['email']))
             return FALSE;
         
+        if(!isset($user['email']))
+            $user['email'] = "";
+        
+        if(!isset($user['fb_id']))
+            $user['fb_id'] = "";
+        
+        if(!isset($user['gmail_id']))
+            $user['gmail_id'] = "";
+        
+        if(!isset($user['password']))
+            $user['password'] = "";
+        
         $data = array(
             "email" => $user['email'],
             "password" => $user['password'],
-            "name" => $user['name']
+            "name" => $user['name'],
+            "fb_id" => $user['fb_id'],
+            "gmail_id" => $user['gmail_id']
         );
         $this->db->insert("users", $data);
         
@@ -31,6 +53,18 @@ class users extends CI_Model{
     
     public function get_user_by_email($email){
         return $this->db->where('email', $email)
+                 ->get('users')
+                 ->row_array();
+    }
+    
+    public function get_user_by_fb_id($fb_id){
+        return $this->db->where('fb_id', $fb_id)
+                 ->get('users')
+                 ->row_array();
+    }
+    
+    public function get_user_by_gmail_id($gmail_id){
+        return $this->db->where('gmail_id', $gmail_id)
                  ->get('users')
                  ->row_array();
     }

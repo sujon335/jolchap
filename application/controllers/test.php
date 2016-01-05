@@ -14,16 +14,10 @@
 class Test extends CI_Controller {
     //put your code here
     public function index(){
-        header('Access-Control-Allow-Origin: *');
-        header('Content-type: application/json');
-        $firstName = $this->input->post("firstName");
-        if($firstName == "konok")
-            $status = "success";
-        else 
-            $status = "failed";
-        $data = array(
-                "status" => $status
-            );
-        echo json_encode($data);
+        $this->load->library("google");
+        $this->google->setApplicationName("JolchapBD");
+        $this->google->setDeveloperKey("AIzaSyC8RCGUGZdwMwfN4zAaEKxqH0JjfLGTXrc");
+        echo $this->google->getLibraryVersion(); 
+        
     }
 }
