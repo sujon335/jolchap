@@ -62,6 +62,8 @@
             }
 
         </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/nicEdit.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jscolor.js"></script>
     </head>
     <body>
         <header id="header"><!--header-->
