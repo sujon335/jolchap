@@ -62,7 +62,6 @@
             }
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/nicEdit.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jscolor.js"></script>
     </head>
     <body>
@@ -179,7 +178,9 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="search_box pull-right">
-                                <input type="text" placeholder="Search"/>
+                                <form method="post" action="<?php echo base_url(); ?>index.php/search/search_get">
+                                <input name="search" type="text" placeholder="Search"/>
+                                </form>
                             </div>
                         </div>
                     </div>

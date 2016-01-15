@@ -174,7 +174,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div id="myNicPanel" ></div><br/>
-                                            <div class="view-product" id="front-card" style="position:relative">
+                                            <div class="view-product" id="frontcard" style="position:relative">
                                                 <img src="<?php echo base_url(); ?>uploads/<?php echo $product_details['front_side']; ?>" alt="" />
                                                 <img class="drag" id="logo" src="http://bakerstreetbabes.com/wp-content/uploads/2013/07/intel-company-logo-png-hd-sk.png"
                                                      alt="" style="cursor: move;position: absolute;left: 10px;top: 20px;height:60px; width: 60px;">
@@ -193,7 +193,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="brands_products"><!--brands_products-->
-                                                <h2>Front Texts</h2>
+                                                <h2>Back Texts</h2>
                                                 <div class="brands-name">
                                                     <form>
                                                         <div class="form-group">
@@ -279,7 +279,15 @@
                         </div>
                         <p><b>Cards in Unit:</b> 1000</p>
                         <p><b>Unit Price:</b> 800 tk</p>
-                        <a class="btn btn-block btn-success" href="<?php echo base_url(); ?>index.php/login">Save Design</a>
+                        <?php
+                          $is_logged_in = $this->session->userdata('is_logged_in_user');
+        if (!isset($is_logged_in) || $is_logged_in != TRUE) { ?>
+                        
+        <a  id="save_btn" class="btn btn-block btn-success" href="<?php echo base_url(); ?>index.php/login">Save Design</a>
+
+        <?php } else{ ?>
+               <a id="save_btn" class="btn btn-block btn-success" href="<?php echo base_url(); ?>index.php/myCards">Save Design</a>
+        <?php } ?>
                     </div><!--/product-information-->
 
                 </div><!--/product-details-->
@@ -349,12 +357,10 @@
                     </div>
             </section>
             <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
             <script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
-
-
 
 
         $(".drag").on('mousedown', function() {
@@ -455,4 +461,47 @@
         });
 
     });
+</script>
+
+
+<script type="text/javascript">
+
+// Ajax post
+$(document).ready(function() {
+$("#save_btn").click(function(event) {
+event.preventDefault();
+        var jsonObj = [];
+         $('#frontcard').children('div').each(function () {
+
+                var text = $(this).text();
+                var font_size = $(this).css("font-size");
+                var font_family = $(this).css("font-family");
+                var color=$(this).css("color");
+                var top=$(this).css('top');
+                var left=$(this).css('left');
+
+                var item = {};
+                item ["text"] = text;
+                item ["font_size"] = font_size;
+                item ["font_family"] = font_family;
+                item ["color"] = color;
+                item ["top"] = top;
+                item ["left"] = left;
+                jsonObj.push(item);
+        });
+       var jsonString = JSON.stringify(jsonObj);
+
+       //alert(jsonString);
+  
+jQuery.ajax({
+type: "POST",
+url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design",
+data:  {card_data: jsonString},
+success: function(data) {
+    alert('success json data: '+data);
+}
+});
+
+});
+});
 </script>

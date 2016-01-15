@@ -36,18 +36,35 @@ class Products extends CI_Model {
         
         return $data;
     }
-    
+
+    public function get_searched_products($page_number, $content_per_page,$search){
+        $this->db->like('lower(product_name)', $search);
+        $data = $this->db->where('id >',0)
+                         ->order_by('id', 'desc')
+                         ->get('products', $content_per_page, $page_number*$content_per_page)
+                         ->result_array();
+
+        return $data;
+    }
+
     public function get_product($product_id){
         return $this->db->where('id', $product_id)
                         ->get('products')
                         ->row_array();
     }
-    
+
+
     public function product_count(){
         return $this->db->where('id >', 0)
                         ->count_all_results('products');
     }
-    
+    public function searched_product_count($search){
+        $this->db->like('lower(product_name)', $search);
+        return $this->db->where('id >', 0)
+                        ->count_all_results('products');
+    }
+
+
     public function update($product){
         $product_details = $this->get_product($product['id']);
         
@@ -102,4 +119,11 @@ class Products extends CI_Model {
                         ->get()
                         ->result_array();
     }
+
+    public function save_design($data){
+        $ins=$this->db->insert("card_text", $data);
+        return $ins;
+    }
+
+
 }

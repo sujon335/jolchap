@@ -69,18 +69,23 @@ class Auth extends CI_Controller {
             $this->load->model('users');
             if($this->users->login($credentials) == TRUE){
                 $user_data = $this->users->get_user_by_email($credentials['email']);
-                
+
+                $design_running = $this->session->userdata('design');
                 $auth_data = array(
                     'user_id' => $user_data['id'],
                     'email' => $user_data['email'],
                     'name' => $user_data['name'],
                     'fb_id' => $user_data['fb_id'],
-                    'gmail_id' => $user_data['gmail_id']
+                    'gmail_id' => $user_data['gmail_id'],
+                    'is_logged_in_user' =>true
                 );
                 
                 $this->session->set_userdata($auth_data);
-                
-                redirect('myCards');
+
+                if (!isset($design_running) || $design_running != TRUE)
+                        redirect('home');
+                else redirect('myCards');
+
             }
             else{
                 $this->session->set_flashdata('status', 'failed');
@@ -120,7 +125,8 @@ class Auth extends CI_Controller {
                     'email' => $user_data['email'],
                     'name' => $user_data['name'],
                     'fb_id' => $user_data['fb_id'],
-                    'gmail_id' => $user_data['gmail_id']
+                    'gmail_id' => $user_data['gmail_id'],
+                    'is_logged_in_user' =>true
             );
                 
             $this->session->set_userdata($auth_data);
