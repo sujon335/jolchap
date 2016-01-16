@@ -33,7 +33,7 @@
                             <tr>
                                 <td class="cart_product">
                                     <a href=""><img src="<?php echo base_url(); ?>uploads/<?php echo $row->front_side; ?>" height="100" width="auto" alt=""></a>
-                                    <br/><br/><a class="btn btn-success" data-toggle="modal" data-target="#d-<?php echo $row->design_id; ?>">View Design</a>
+                                    <br/><br/><a class="btn btn-success" onclick="get_text(<?php echo $row->design_id; ?>);" data-toggle="modal" data-target="#d-<?php echo $row->design_id; ?>">View Design</a>
                                 </td>
                                 <td class="cart_description">
                                     <p>Dimension: <?php echo $row->dimension; ?></p>
@@ -72,9 +72,7 @@
                                 <div class="view-product" id="frontcard" style="position:relative">
                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $row->front_side; ?>" alt="" />
 
-                                    <div style="color: <?php  ?>;font-family: <?php  ?>;font-size: <?php  ?>; position: absolute;left: <?php  ?>;top:<?php  ?>;">
-                                      <?php  ?>  
-                                    </div>
+                    
 
                                     <h3>ZOOM</h3>
                                 </div>
@@ -98,3 +96,26 @@
         </div>
     </div>
 </section> <!--/#cart_items-->
+
+<script type="text/javascript">
+
+
+function get_text(id) {
+                        
+
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url(); ?>" + "index.php/myCards/get_card_text_data",
+                data:  {design_id: id},
+                success: function(data) {
+                    alert('success json data: '+data);
+                    $.each(data, function (key, item) {
+                        // Add a list item for the product.
+                        $('<div>', { text: item  }).appendTo($('#frontcard'));
+                    });                  
+                }
+            });
+
+        }
+
+</script>

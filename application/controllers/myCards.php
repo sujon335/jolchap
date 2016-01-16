@@ -25,4 +25,13 @@ class myCards extends CI_Controller{
         $this->load->view("my_cards/my_cards_body",$data);
         $this->load->view("common/footer");
     }
+    public function get_card_text_data()
+    {
+        $data=array();
+        $design_id=$_POST['design_id'];
+        $this->db->where('design_id', $design_id);
+        $query = $this->db->get('card_text');
+        $data['design'] = $query->result();
+        var_dump($data);
+    }
 }
