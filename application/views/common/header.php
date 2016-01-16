@@ -128,12 +128,23 @@
                                             <i class="fa fa-shopping-cart"></i> My Cards
                                         </a>
                                     </li>
+                        <?php
+                        $is_logged_in = $this->session->userdata('is_logged_in_user');
+                        if (!isset($is_logged_in) || $is_logged_in != TRUE) {
+                        ?>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/login"
                                            <?php if (isset($header_name) && $header_name == 'login') echo 'class="active"'; ?>>
                                             <i class="fa fa-lock"></i> Login
                                         </a>
                                     </li>
+                                    <?php }  else {?>
+                                     <li>
+                                        <a href="<?php echo base_url(); ?>index.php/auth/logout">
+                                            <i class="fa fa-lock"></i> Logout
+                                        </a>
+                                    </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>

@@ -12,138 +12,143 @@
  * @author habibullaharaphat
  */
 class Auth extends CI_Controller {
+
     //put your code here
-    public function signup(){
+    public function signup() {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        
+
         $this->form_validation->set_rules('name', "Name", 'required');
         $this->form_validation->set_rules('email', "Email", 'required');
         $this->form_validation->set_rules('password', "Password", 'required');
-        
-        if($this->form_validation->run() == TRUE){
+
+        if ($this->form_validation->run() == TRUE) {
             $user['name'] = $this->input->post('name', TRUE);
             $user['email'] = $this->input->post('email', TRUE);
             $user['password'] = $this->input->post('password', TRUE);
-            
+
             $this->load->model("users");
-            if($this->users->insert($user) == TRUE){
+            if ($this->users->insert($user) == TRUE) {
                 $this->session->set_flashdata('status', 'success');
                 $this->session->set_flashdata('message', 'Client has been created successfully.');
-            }
-            else{
+            } else {
                 $this->session->set_flashdata('status', 'failed');
                 $this->session->set_flashdata('message', 'User already exists.');
             }
-        }
-        else{
+        } else {
             $this->session->set_flashdata('status', 'failed');
             $this->session->set_flashdata('message', 'Validation error.');
         }
-        
+
         redirect('login');
     }
-    
-    public function login(){
+
+    public function login() {
         /*
          * facebook data
          */
-        
-        
+
+
         /*
          * load helpers
          */
         $this->load->helper('form');
         $this->load->library('form_validation');
-        
+
         $this->form_validation->set_rules('email', "Email", "required");
         $this->form_validation->set_rules('password', "Password", "required");
-        
+
         //echo $this->input->post('email');
-        
-        
-        if($this->form_validation->run() == TRUE){
+
+
+        if ($this->form_validation->run() == TRUE) {
             $credentials['email'] = $this->input->post('email', TRUE);
             $credentials['password'] = $this->input->post('password', TRUE);
-            
+
             $this->load->model('users');
-            if($this->users->login($credentials) == TRUE){
+            if ($this->users->login($credentials) == TRUE) {
                 $user_data = $this->users->get_user_by_email($credentials['email']);
 
-                $design_running = $this->session->userdata('design');
+                $design_id = $this->session->userdata('design_id');
+
                 $auth_data = array(
                     'user_id' => $user_data['id'],
                     'email' => $user_data['email'],
                     'name' => $user_data['name'],
                     'fb_id' => $user_data['fb_id'],
                     'gmail_id' => $user_data['gmail_id'],
-                    'is_logged_in_user' =>true
+                    'is_logged_in_user' => true
                 );
-                
                 $this->session->set_userdata($auth_data);
 
-                if (!isset($design_running) || $design_running != TRUE)
-                        redirect('home');
-                else redirect('myCards');
 
+
+                if (isset($design_id)) {
+                    $arr = array(
+                        'user_id' => $user_data['id']
+                    );
+
+                    $this->db->where('design_id', $design_id);
+                    $this->db->update('design', $arr);
+                    redirect('myCards');
+                }
+                else
+                    redirect('home');
             }
-            else{
+            else {
                 $this->session->set_flashdata('status', 'failed');
                 $this->session->set_flashdata('message', 'Wrong Email or Password');
             }
-        }
-        else {
+        } else {
             //echo "validation failed.";
             $this->session->set_flashdata('status', 'failed');
             $this->session->set_flashdata('message', 'Validation error.');
         }
-        
+
         //redirect('login');
     }
-    
-    public function facebook_login(){
+
+    public function facebook_login() {
         /*
          * fb data
          */
         $fb_user = $this->facebook->get_user();
         $header_data['fb_user'] = $fb_user;
-        
+
         /*
          * load model
          */
         $this->load->model("users");
-        
-        if(isset($fb_user['id']) && $fb_user['id'] != ""){
+
+        if (isset($fb_user['id']) && $fb_user['id'] != "") {
             $user['name'] = $fb_user['name'];
             $user['fb_id'] = $fb_user['id'];
             $this->users->insert($user);
-            
+
             $user_data = $this->users->get_user_by_fb_id($user['fb_id']);
-            
+
             $auth_data = array(
-                    'user_id' => $user_data['id'],
-                    'email' => $user_data['email'],
-                    'name' => $user_data['name'],
-                    'fb_id' => $user_data['fb_id'],
-                    'gmail_id' => $user_data['gmail_id'],
-                    'is_logged_in_user' =>true
+                'user_id' => $user_data['id'],
+                'email' => $user_data['email'],
+                'name' => $user_data['name'],
+                'fb_id' => $user_data['fb_id'],
+                'gmail_id' => $user_data['gmail_id'],
+                'is_logged_in_user' => true
             );
-                
+
             $this->session->set_userdata($auth_data);
-            
+
             redirect("myCards");
-        }
-        else{
+        } else {
             redirect("login");
         }
-        
+
         /*
          * load model
          */
     }
-    
-    
-    public function google_login(){
+
+    public function google_login() {
         $this->load->library('google');
         $token = $this->input->get('code');
         $this->load->library("google");
@@ -151,20 +156,27 @@ class Auth extends CI_Controller {
         $client_secret = '9hwmVOkkpzbloXsk5C-YMLLY';
         $redirect_uri = 'http://localhost/jolchap/index.php/auth/google_login?';
         $simple_api_key = 'AIzaSyC8RCGUGZdwMwfN4zAaEKxqH0JjfLGTXrc';
-        
-        
-        
+
+
+
         $this->google->setApplicationName("PHP Google OAuth Login Example");
         $this->google->setClientId($client_id);
         $this->google->setClientSecret($client_secret);
         $this->google->setRedirectUri($redirect_uri);
         $this->google->setDeveloperKey($simple_api_key);
         $this->google->addScope("https://www.googleapis.com/auth/userinfo.email");
-        
+
         $this->google->authenticate($token);
         $accessToken = $this->google->getAccessToken();
-        
+
         var_dump($accessToken);
+    }
+
+    public function logout()
+    {
+        $this->load->library('session');
+        $this->session->sess_destroy();
+        redirect('home');   
     }
 }
 

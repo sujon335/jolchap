@@ -121,9 +121,10 @@ class Products extends CI_Model {
     }
 
     public function save_design($data){
-        $ins=$this->db->insert("card_text", $data);
+        $ins=$this->db->insert("design",$data);
         return $ins;
     }
+
 
 
 }
