@@ -108,10 +108,10 @@ function get_text(id) {
                             url: "<?php echo base_url(); ?>" + "index.php/myCards/get_card_text_data",
                 data:  {design_id: id},
                 success: function(data) {
-                    alert('success json data: '+data);
+                    alert('success : '+data);
                     $.each(data, function (key, item) {
                         // Add a list item for the product.
-                        $('<div>', { text: item  }).appendTo($('#frontcard'));
+                      
                     });                  
                 }
             });

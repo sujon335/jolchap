@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2016 at 09:42 AM
+-- Generation Time: Jan 16, 2016 at 12:06 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -51,18 +51,21 @@ CREATE TABLE IF NOT EXISTS `card_text` (
   `left_pos` varchar(50) NOT NULL,
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `card_text`
 --
 
 INSERT INTO `card_text` (`id`, `design_id`, `text`, `color`, `font_family`, `font_size`, `top_pos`, `left_pos`, `type`) VALUES
-(1, 0, '', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '60px', '120px', 'front'),
-(2, 0, 'sujon', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '60px', '120px', 'front'),
-(3, 0, 'eng', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '80px', '150px', 'front'),
-(4, 0, 'sujon335', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '250px', '350px', 'front'),
-(5, 0, '0167', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '300px', '350px', 'front');
+(6, 1, 'Sydur Rahaman', 'rgb(251, 255, 25)', 'Roboto, sans-serif', '19px', '60px', '120px', 'front'),
+(7, 1, 'Software Engineer', 'rgb(82, 148, 255)', 'Roboto, sans-serif', '14px', '93px', '176.344px', 'front'),
+(8, 1, 'sujon335@yahoo.com', 'rgb(184, 255, 31)', 'Roboto, sans-serif', '14px', '250px', '350px', 'front'),
+(9, 1, '+8801673941126', 'rgb(25, 255, 236)', 'Roboto, sans-serif', '14px', '274px', '373.344px', 'front'),
+(10, 2, 'bahar', 'rgb(255, 230, 41)', 'Roboto, sans-serif', '19px', '60px', '120px', 'front'),
+(11, 2, 'engineer', 'rgb(31, 117, 255)', 'Algerian', '19px', '35.5px', '116.844px', 'front'),
+(12, 2, 'bahar@yahoo.com', 'rgb(126, 255, 46)', 'Roboto, sans-serif', '14px', '301px', '53.844px', 'front'),
+(13, 2, '016474599555', 'rgb(128, 249, 255)', 'Roboto, sans-serif', '14px', '324px', '91.344px', 'front');
 
 -- --------------------------------------------------------
 
@@ -72,12 +75,21 @@ INSERT INTO `card_text` (`id`, `design_id`, `text`, `color`, `font_family`, `fon
 
 CREATE TABLE IF NOT EXISTS `design` (
   `design_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
-  `dimensions` varchar(50) NOT NULL,
+  `dimension` varchar(50) NOT NULL,
   `paper` varchar(50) NOT NULL,
-  `lamination` int(50) NOT NULL,
+  `lamination` varchar(50) NOT NULL,
   PRIMARY KEY (`design_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `design`
+--
+
+INSERT INTO `design` (`design_id`, `user_id`, `product_id`, `dimension`, `paper`, `lamination`) VALUES
+(1, 1, 12, '4x6', 'Paper 1', 'Glossy'),
+(2, 3, 11, '3x5', 'Paper 2', 'Matt');
 
 -- --------------------------------------------------------
 
@@ -216,20 +228,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `fb_id`, `gmail_id`) VALUES
 (1, 'test@test.com', '1234', 'test', '', ''),
 (2, 'konokhabibullah@gmail.com', '123456', 'Habibullah Araphat', '', ''),
-(3, '', '', 'Konok Habibullah Araphat', '10201272362647010', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_design`
---
-
-CREATE TABLE IF NOT EXISTS `user_design` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `design_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+(3, 'sujon335@yahoo.com', '1234', 'sujon', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
