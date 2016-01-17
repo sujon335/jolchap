@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2016 at 12:06 PM
+-- Generation Time: Jan 17, 2016 at 09:38 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `card_text` (
   `left_pos` varchar(50) NOT NULL,
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `card_text`
@@ -65,7 +65,11 @@ INSERT INTO `card_text` (`id`, `design_id`, `text`, `color`, `font_family`, `fon
 (10, 2, 'bahar', 'rgb(255, 230, 41)', 'Roboto, sans-serif', '19px', '60px', '120px', 'front'),
 (11, 2, 'engineer', 'rgb(31, 117, 255)', 'Algerian', '19px', '35.5px', '116.844px', 'front'),
 (12, 2, 'bahar@yahoo.com', 'rgb(126, 255, 46)', 'Roboto, sans-serif', '14px', '301px', '53.844px', 'front'),
-(13, 2, '016474599555', 'rgb(128, 249, 255)', 'Roboto, sans-serif', '14px', '324px', '91.344px', 'front');
+(13, 2, '016474599555', 'rgb(128, 249, 255)', 'Roboto, sans-serif', '14px', '324px', '91.344px', 'front'),
+(14, 3, 'Rishad Rizwan', 'rgb(51, 143, 255)', 'Roboto, sans-serif', '14px', '30px', '73.8438px', 'front'),
+(15, 3, 'ME', 'rgb(193, 255, 36)', 'Roboto, sans-serif', '14px', '52px', '75.844px', 'front'),
+(16, 3, 'rrr@gmail.com', 'rgb(56, 126, 255)', 'Roboto, sans-serif', '19px', '270px', '305.344px', 'front'),
+(17, 3, '016754425265', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '300px', '350px', 'front');
 
 -- --------------------------------------------------------
 
@@ -81,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `design` (
   `paper` varchar(50) NOT NULL,
   `lamination` varchar(50) NOT NULL,
   PRIMARY KEY (`design_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `design`
@@ -89,7 +93,8 @@ CREATE TABLE IF NOT EXISTS `design` (
 
 INSERT INTO `design` (`design_id`, `user_id`, `product_id`, `dimension`, `paper`, `lamination`) VALUES
 (1, 1, 12, '4x6', 'Paper 1', 'Glossy'),
-(2, 3, 11, '3x5', 'Paper 2', 'Matt');
+(2, 3, 11, '3x5', 'Paper 2', 'Matt'),
+(3, 1, 14, '4x6', 'Paper 1', 'Matt');
 
 -- --------------------------------------------------------
 
@@ -119,24 +124,33 @@ INSERT INTO `featured_products` (`id`, `product_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `company_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `address1` text NOT NULL,
   `address2` text NOT NULL,
   `postal_code` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
-  `region` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `mobile_phone` varchar(50) NOT NULL,
   `fax` text NOT NULL,
+  `message` text NOT NULL,
   `Total` varchar(50) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`order_id`, `user_id`, `company_name`, `email`, `title`, `first_name`, `middle_name`, `last_name`, `address1`, `address2`, `postal_code`, `country`, `state`, `phone`, `mobile_phone`, `fax`, `message`, `Total`) VALUES
+(2, 1, 'abc', 'sujon335@yahoo.com', '"Countdown of cultural night" ', 'Saidur ', '', 'Rahman', 'House NO:60 BLOCK :B ROAD NO: 3 ', '0', '0', 'Bangladesh', 'Bangladesh', '', '+8801673941126', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -145,11 +159,20 @@ CREATE TABLE IF NOT EXISTS `order` (
 --
 
 CREATE TABLE IF NOT EXISTS `order_design` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `design_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `order_design`
+--
+
+INSERT INTO `order_design` (`id`, `order_id`, `design_id`, `quantity`) VALUES
+(1, 3, 1, 2),
+(2, 3, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -204,6 +227,20 @@ INSERT INTO `recommended_products` (`id`, `product_id`) VALUES
 (4, 11),
 (5, 12),
 (6, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_order_design`
+--
+
+CREATE TABLE IF NOT EXISTS `temp_order_design` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `design_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
