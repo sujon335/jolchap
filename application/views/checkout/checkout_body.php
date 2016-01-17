@@ -14,29 +14,28 @@
         </div><!--/breadcrums-->
 
 
-
+        <form id="form1" method="post" action="<?php echo base_url(); ?>/index.php/checkout/save_order">
         <div class="shopper-informations">
+
             <div class="row">
 
                 <div class="col-sm-5 clearfix">
                     <div class="bill-to">
                         <p>Bill To</p>
                         <div class="form-one">
-                            <form>
-                                <input type="text" placeholder="Company Name">
-                                <input type="text" placeholder="Email*">
-                                <input type="text" placeholder="Title">
-                                <input type="text" placeholder="First Name *">
-                                <input type="text" placeholder="Middle Name">
-                                <input type="text" placeholder="Last Name *">
-                                <input type="text" placeholder="Address 1 *">
-                                <input type="text" placeholder="Address 2">
-                            </form>
+                               <input name="company" type="text" placeholder="Company Name">
+                                <input name="email" type="text" placeholder="Email">
+                                <input name="title" type="text" placeholder="Title">
+                                <input name="first_name" type="text" placeholder="First Name ">
+                                <input name="middle_name" type="text" placeholder="Middle Name">
+                                <input name="last_name" type="text" placeholder="Last Name ">
+                                <input name="address1" type="text" placeholder="Address 1 ">
+                                <input name="adress2" type="text" placeholder="Address 2">
+                            
                         </div>
                         <div class="form-two">
-                            <form>
-                                <input type="text" placeholder="Zip / Postal Code *">
-                                <select>
+                              <input name="zip" type="text" placeholder="Zip / Postal Code ">
+                                <select name="country">
                                     <option>-- Country --</option>
                                     <option>United States</option>
                                     <option>Bangladesh</option>
@@ -47,7 +46,7 @@
                                     <option>Canada</option>
                                     <option>Dubai</option>
                                 </select>
-                                <select>
+                                <select name="state">
                                     <option>-- State / Province / Region --</option>
                                     <option>United States</option>
                                     <option>Bangladesh</option>
@@ -57,30 +56,33 @@
                                     <option>Ucrane</option>
                                     <option>Canada</option>
                                     <option>Dubai</option>
-                                </select>
-                                <input type="password" placeholder="Confirm password">
-                                <input type="text" placeholder="Phone *">
-                                <input type="text" placeholder="Mobile Phone">
-                                <input type="text" placeholder="Fax">
-                            </form>
+                                </select>                                
+                                <input name="phone" type="text" placeholder="Phone ">
+                                <input name="mobile_phone"type="text" placeholder="Mobile Phone *">
+                                <input name="fax" type="text" placeholder="Fax">
+                           
                         </div>
 
                     </div>
 
                 </div>
-                <div class="col-sm-4">
-                    <div class="order-message">
-                        <p>Additional Note</p>
-                        <textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                        
-                    </div>	
-                </div>					
+             
+                    <div class="col-sm-4">
+                        <div class="order-message">
+                            <p>Additional Note</p>
+                            <textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+
+                        </div>
+                    </div>
+                
             </div>
 
         </div>
         <div class="review-payment">
-            <a class="btn btn-lg btn-primary" href="">Place Order</a>
-        </div>
+             <button type="submit" class="btn btn-lg btn-primary">Place Order</button>
+         </div>
+         </form>
+        
         <div class="review-payment">
             <h2>Review & Payment</h2>
         </div>
@@ -99,107 +101,67 @@
                 </thead>
                 <tbody>
 
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="<?php echo base_url(); ?>assets/images/card/1.jpg" height="100" width="auto" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                    <?php
+                    if (isset($design)) {
+                        foreach ($design as $row) {
+                    ?>
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="<?php echo base_url(); ?>uploads/<?php echo $row->front_side; ?>" height="100" width="auto" alt=""></a>
+                                    <br/><br/><a class="btn btn-success" onclick="get_text(<?php echo $row->design_id; ?>);" data-toggle="modal" data-target="#d-<?php echo $row->design_id; ?>">View Design</a>
+                                </td>
+                                <td class="cart_description">
+                                    <p>Dimension: <?php echo $row->dimension; ?></p>
+                                    <p>Paper: <?php echo $row->paper; ?></p>
+                                    <p>Lamination: <?php echo $row->lamination; ?></p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$59</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                <?php echo $row->quantity; ?>
                             </div>
                         </td>
                         <td class="cart_total">
                             <p class="cart_total_price">$59</p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                            <a class="cart_quantity_delete" href=""><i class="fa fa-remove"></i></a>
                         </td>
                     </tr>
 
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="<?php echo base_url(); ?>assets/images/card/2.jpg" height="100" width="auto"  alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                <div id="d-<?php echo $row->design_id; ?>" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
                             </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="<?php echo base_url(); ?>assets/images/card/3.jpg" height="100" width="auto"  alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                            <div class="modal-body">
+                                <div id="myNicPanel" >
+                                    <div class="view-product" id="frontcard" style="position:relative">
+                                        <img src="<?php echo base_url(); ?>uploads/<?php echo $row->front_side; ?>" alt="" />
+
+
+
+                                        <h3>ZOOM</h3>
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
 
-                    <tr>
-                        <td colspan="4">&nbsp;</td>
-                        <td colspan="2">
-                            <table class="table table-condensed total-result">
-                                <tr>
-                                    <td>Cart Sub Total</td>
-                                    <td>$59</td>
-                                </tr>
-                                <tr>
-                                    <td>Exo Tax</td>
-                                    <td>$2</td>
-                                </tr>
-                                <tr class="shipping-cost">
-                                    <td>Shipping Cost</td>
-                                    <td>Free</td>										
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td><span>$61</span></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                <?php }
+                        } ?>
                 </tbody>
             </table>
         </div>
@@ -218,5 +180,15 @@
 </section> <!--/#cart_items-->
 
 
+<script>
+    $(document).ready(function(){
+        $("#order_save").click(function(){
+            $( "#form1" ).submit();
+            $( "#form2" ).submit();
+            $( "#form3" ).submit();
+            alert("form_sunmitted");
+        });
+    });
 
+</script>
 

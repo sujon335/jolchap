@@ -20,9 +20,13 @@ class Checkout extends CI_Controller {
             redirect('login');
         $user_id=$this->session->userdata('user_id');
         $data=array();
+        
+
+        $this->db->join('design', 'design.design_id=temp_order_design.design_id');
         $this->db->join('products', 'products.id=design.product_id');
-        $this->db->where('design.user_id', $user_id);
-        $query = $this->db->get('design');
+        $this->db->where('temp_order_design.user_id', $user_id);
+        $query = $this->db->get('temp_order_design');
+
         $data['design'] = $query->result();
         $header_data['header_name'] = "checkout";
         $this->load->view("common/header", $header_data);
@@ -49,7 +53,18 @@ class Checkout extends CI_Controller {
     }
     public function save_order()
     {
-        
+        $this->load->model("products");
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('mobile_phone','required');
+        if ($this->form_validation->run() == TRUE) {
+            $this->products->save_order_model();
+            redirect('home');
+        }
+        else {
+            $this->session->set_flashdata('status', 'failed');
+            $this->session->set_flashdata('message', 'Mobile number is required');
+        }
     }
 
 }
