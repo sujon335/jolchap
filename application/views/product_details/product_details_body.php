@@ -288,9 +288,9 @@
                             <a  id="save_btn_temp" class="btn btn-block btn-success" href="<?php echo base_url(); ?>index.php/login">Save Design</a>
 
                         <?php } else {
- ?>
+                        ?>
                             <a id="save_btn_user" class="btn btn-block btn-success" href="<?php echo base_url(); ?>index.php/myCards">Save Design</a>
-<?php } ?>
+                        <?php } ?>
                     </div><!--/product-information-->
 
                 </div><!--/product-details-->
@@ -313,11 +313,11 @@
                             foreach ($recommended_products as $product):
                                 $i++;
                             ?>
-<?php if ($i == 1): ?>
+                            <?php if ($i == 1): ?>
                                     <div class="item active">
-<?php elseif ($i % 3 == 1): ?>
+                                <?php elseif ($i % 3 == 1): ?>
                                         <div class="item">
-<?php endif; ?>
+                                    <?php endif; ?>
                                         <div class="col-sm-4">
                                             <div class="product-image-wrapper">
                                                 <div class="single-products">
@@ -336,241 +336,241 @@
                                             </div>
                                         </div>
                                     </div>
-<?php if ($i % 3 == 0 || ($i > 3 && $i == $limit)): ?>
-                                        </div>
-<?php endif; ?>
+                                    <?php if ($i % 3 == 0 || ($i > 3 && $i == $limit)): ?>
+                                                        </div>
+                                <?php endif; ?>
 
                                 <?php
-                                            endforeach;
+                                                            endforeach;
                                 ?>
 
 
+                                                        </div>
+                                                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                                                            <i class="fa fa-angle-left"></i>
+                                                        </a>
+                                                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                                            <i class="fa fa-angle-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div><!--/recommended_items-->
+                                            </div>
                                         </div>
-                                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                                            <i class="fa fa-angle-left"></i>
-                                        </a>
-                                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
+
                                     </div>
-                                </div><!--/recommended_items-->
-                            </div>
-                        </div>
-
-                    </div>
-            </section>
-            <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-            <script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function () {
+                            </section>
+                            <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                            <script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
 
 
-                    $(".drag").on('mousedown', function() {
-                        $(this).addClass('draggable').parents().on('mousemove', function(e) {
-                            $('.draggable').offset({
-                                top: e.pageY - $('.draggable').outerHeight() / 2,
-                                left: e.pageX - $('.draggable').outerWidth() / 2
-                            }).on('mouseup', function() {
-                                $(this).removeClass('draggable');
-                            });
-                        });
-                        e.preventDefault();
-                    }).on('mouseup', function() {
-                        $('.draggable').removeClass('draggable');
-                    });
+                                    $(".drag").on('mousedown', function() {
+                                        $(this).addClass('draggable').parents().on('mousemove', function(e) {
+                                            $('.draggable').offset({
+                                                top: e.pageY - $('.draggable').outerHeight() / 2,
+                                                left: e.pageX - $('.draggable').outerWidth() / 2
+                                            }).on('mouseup', function() {
+                                                $(this).removeClass('draggable');
+                                            });
+                                        });
+                                        e.preventDefault();
+                                    }).on('mouseup', function() {
+                                        $('.draggable').removeClass('draggable');
+                                    });
 
-                });
-            </script>
+                                });
+                            </script>
 
 
 
-            <script>
+                            <script>
 
-                $(document).ready(function(){
-                    var cnt =5;
-                    var xx ='<div class="form-group"><input type="text" class="abc form-control" id="';
-                    var x='" placeholder="Enter text here"></div>';
-                    var yy='<div class="drag" id="div';
-                    var y='" style="cursor: move;position: absolute;left: 200px;top: 200px;"></div>';
-                    $("#add-another").click(function(e){
-                        $("#add-another").before(xx+cnt+x);
-                        $('#front-card').append(yy+cnt+y);
-                        cnt++;
-                        e.preventDefault();
-                    });
+                                $(document).ready(function(){
+                                    var cnt =5;
+                                    var xx ='<div class="form-group"><input type="text" class="abc form-control" id="';
+                                    var x='" placeholder="Enter text here"></div>';
+                                    var yy='<div class="drag" id="div';
+                                    var y='" style="cursor: move;position: absolute;left: 200px;top: 200px;"></div>';
+                                    $("#add-another").click(function(e){
+                                        $("#add-another").before(xx+cnt+x);
+                                        $('#front-card').append(yy+cnt+y);
+                                        cnt++;
+                                        e.preventDefault();
+                                    });
 
-                });
-            </script>
+                                });
+                            </script>
 
-            <script type="text/javascript">
-                $(document).ready(function(){
+                            <script type="text/javascript">
+                                $(document).ready(function(){
 
-                    var selected_div=0;
-                    var prev=0;
-                    $('.abc')
-                    .keyup(function() {
-                        var num=this.id;
-                        //selected_div=this.id;
-                        var value = $( this ).val();
-                        $( '#div'+ num).text( value );
-                    })
-                    .keyup();
+                                    var selected_div=0;
+                                    var prev=0;
+                                    $('.abc')
+                                    .keyup(function() {
+                                        var num=this.id;
+                                        //selected_div=this.id;
+                                        var value = $( this ).val();
+                                        $( '#div'+ num).text( value );
+                                    })
+                                    .keyup();
 
 
-                    $('.abc')
-                    .focus(function() {
-                        selected_div=this.id;
-                        $('#'+prev).css("border","1px solid #8F8F8F");
-                        $(this).css("border","2px solid blue");
-                        prev=this.id;
-                    });
+                                    $('.abc')
+                                    .focus(function() {
+                                        selected_div=this.id;
+                                        $('#'+prev).css("border","1px solid #8F8F8F");
+                                        $(this).css("border","2px solid blue");
+                                        prev=this.id;
+                                    });
 
 
 
 
-                    $('#color').change(function()
-                    {
-                        var value = $( this ).val();
-                        $( '#div'+ selected_div).css("color","#"+value);
-                    });
+                                    $('#color').change(function()
+                                    {
+                                        var value = $( this ).val();
+                                        $( '#div'+ selected_div).css("color","#"+value);
+                                    });
 
-                    $('#font_select').change(function()
-                    {
-                        var value = $( this ).val();
-                        $( '#div'+ selected_div).css("font-family",value );
-                    });
-                    $('#logo_resize').change(function(){
-                        var value = $( this ).val();
-                        $('#logo').css("width",value);
-                        $('#logo').css("height",value);
-                    });
-                    $('#font_plus').click(function(e)
-                    {
+                                    $('#font_select').change(function()
+                                    {
+                                        var value = $( this ).val();
+                                        $( '#div'+ selected_div).css("font-family",value );
+                                    });
+                                    $('#logo_resize').change(function(){
+                                        var value = $( this ).val();
+                                        $('#logo').css("width",value);
+                                        $('#logo').css("height",value);
+                                    });
+                                    $('#font_plus').click(function(e)
+                                    {
 
-                        var cur_size=$( '#div'+ selected_div).css("font-size");
-                        var value = parseInt(cur_size.substring(0, 2))+5;
-                        $( '#div'+ selected_div).css("font-size", value + "px");
-                        e.preventDefault();
-                    });
+                                        var cur_size=$( '#div'+ selected_div).css("font-size");
+                                        var value = parseInt(cur_size.substring(0, 2))+5;
+                                        $( '#div'+ selected_div).css("font-size", value + "px");
+                                        e.preventDefault();
+                                    });
 
-                    $('#font_minus').click(function(e)
-                    {
+                                    $('#font_minus').click(function(e)
+                                    {
 
-                        var cur_size=$( '#div'+ selected_div).css("font-size");
-                        var value = parseInt(cur_size.substring(0, 2))-5;
-                        $( '#div'+ selected_div).css("font-size", value + "px");
-                        e.preventDefault();
-                    });
+                                        var cur_size=$( '#div'+ selected_div).css("font-size");
+                                        var value = parseInt(cur_size.substring(0, 2))-5;
+                                        $( '#div'+ selected_div).css("font-size", value + "px");
+                                        e.preventDefault();
+                                    });
 
-                });
-            </script>
+                                });
+                            </script>
 
-            <script type="text/javascript">
+                            <script type="text/javascript">
 
-                // Ajax post
-                $(document).ready(function() {
-                    $("#save_btn_user").click(function(event) {
-                        // event.preventDefault();
+                                // Ajax post
+                                $(document).ready(function() {
+                                    $("#save_btn_user").click(function(event) {
+                                        // event.preventDefault();
 
-                        var product_id=<?php echo $product_details['id'] ?>;
-                        var dimension=$("#dim").val();
-                        var paper=$("#paper").val();
-                        var lamination=$("#lamination").val();
-                        var jsonObj=[];
-                        var design_item={};
-                        design_item["product_id"]=product_id;
-                        design_item["dimension"]=dimension;
-                        design_item["paper"]=paper;
-                        design_item["lamination"]=lamination;
+                                        var product_id=<?php echo $product_details['id'] ?>;
+                                        var dimension=$("#dim").val();
+                                        var paper=$("#paper").val();
+                                        var lamination=$("#lamination").val();
+                                        var jsonObj=[];
+                                        var design_item={};
+                                        design_item["product_id"]=product_id;
+                                        design_item["dimension"]=dimension;
+                                        design_item["paper"]=paper;
+                                        design_item["lamination"]=lamination;
 
-                        var textDataJsonObj = [];
-                        $('#frontcard').children('div').each(function () {
+                                        var textDataJsonObj = [];
+                                        $('#frontcard').children('div').each(function () {
 
-                            var text = $(this).text();
-                            var font_size = $(this).css("font-size");
-                            var font_family = $(this).css("font-family");
-                            var color=$(this).css("color");
-                            var top=$(this).css('top');
-                            var left=$(this).css('left');
+                                            var text = $(this).text();
+                                            var font_size = $(this).css("font-size");
+                                            var font_family = $(this).css("font-family");
+                                            var color=$(this).css("color");
+                                            var top=$(this).css('top');
+                                            var left=$(this).css('left');
 
-                            var text_item = {};
-                            text_item ["text"] = text;
-                            text_item ["font_size"] = font_size;
-                            text_item ["font_family"] = font_family;
-                            text_item ["color"] = color;
-                            text_item ["top"] = top;
-                            text_item ["left"] = left;
-                            textDataJsonObj.push(text_item);
-                        });
+                                            var text_item = {};
+                                            text_item ["text"] = text;
+                                            text_item ["font_size"] = font_size;
+                                            text_item ["font_family"] = font_family;
+                                            text_item ["color"] = color;
+                                            text_item ["top"] = top;
+                                            text_item ["left"] = left;
+                                            textDataJsonObj.push(text_item);
+                                        });
 
-                        design_item["card_texts"]=textDataJsonObj;
-                        jsonObj.push(design_item);
-                        var jsonString=JSON.stringify(jsonObj);
+                                        design_item["card_texts"]=textDataJsonObj;
+                                        jsonObj.push(design_item);
+                                        var jsonString=JSON.stringify(jsonObj);
 
-                        //  alert(jsonString);
-
-
-                        jQuery.ajax({
-                            type: "POST",
-                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_user",
-                            data:  {card_data: jsonString},
-                            success: function(data) {
-                                //alert('success json data: '+data);
-                            }
-                        });
-
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-
-                // Ajax post
-                $(document).ready(function() {
-                    $("#save_btn_temp").click(function(event) {
-                        // event.preventDefault();
-
-                        var product_id=<?php echo $product_details['id'] ?>;
-                        var dimension=$("#dim").val();
-                        var paper=$("#paper").val();
-                        var lamination=$("#lamination").val();
-                        var jsonObj=[];
-                        var design_item={};
-                        design_item["product_id"]=product_id;
-                        design_item["dimension"]=dimension;
-                        design_item["paper"]=paper;
-                        design_item["lamination"]=lamination;
-
-                        var textDataJsonObj = [];
-                        $('#frontcard').children('div').each(function () {
-
-                            var text = $(this).text();
-                            var font_size = $(this).css("font-size");
-                            var font_family = $(this).css("font-family");
-                            var color=$(this).css("color");
-                            var top=$(this).css('top');
-                            var left=$(this).css('left');
-
-                            var text_item = {};
-                            text_item ["text"] = text;
-                            text_item ["font_size"] = font_size;
-                            text_item ["font_family"] = font_family;
-                            text_item ["color"] = color;
-                            text_item ["top"] = top;
-                            text_item ["left"] = left;
-                            textDataJsonObj.push(text_item);
-                        });
-
-                        design_item["card_texts"]=textDataJsonObj;
-                        jsonObj.push(design_item);
-                        var jsonString=JSON.stringify(jsonObj);
-
-                        //  alert(jsonString);
+                                        //  alert(jsonString);
 
 
-                        jQuery.ajax({
-                            type: "POST",
-                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_temp",
+                                        jQuery.ajax({
+                                            type: "POST",
+                                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_user",
+                                            data:  {card_data: jsonString},
+                                            success: function(data) {
+                                                //alert('success json data: '+data);
+                                            }
+                                        });
+
+                                    });
+                                });
+                            </script>
+                            <script type="text/javascript">
+
+                                // Ajax post
+                                $(document).ready(function() {
+                                    $("#save_btn_temp").click(function(event) {
+                                        // event.preventDefault();
+
+                                        var product_id=<?php echo $product_details['id'] ?>;
+                                        var dimension=$("#dim").val();
+                                        var paper=$("#paper").val();
+                                        var lamination=$("#lamination").val();
+                                        var jsonObj=[];
+                                        var design_item={};
+                                        design_item["product_id"]=product_id;
+                                        design_item["dimension"]=dimension;
+                                        design_item["paper"]=paper;
+                                        design_item["lamination"]=lamination;
+
+                                        var textDataJsonObj = [];
+                                        $('#frontcard').children('div').each(function () {
+
+                                            var text = $(this).text();
+                                            var font_size = $(this).css("font-size");
+                                            var font_family = $(this).css("font-family");
+                                            var color=$(this).css("color");
+                                            var top=$(this).css('top');
+                                            var left=$(this).css('left');
+
+                                            var text_item = {};
+                                            text_item ["text"] = text;
+                                            text_item ["font_size"] = font_size;
+                                            text_item ["font_family"] = font_family;
+                                            text_item ["color"] = color;
+                                            text_item ["top"] = top;
+                                            text_item ["left"] = left;
+                                            textDataJsonObj.push(text_item);
+                                        });
+
+                                        design_item["card_texts"]=textDataJsonObj;
+                                        jsonObj.push(design_item);
+                                        var jsonString=JSON.stringify(jsonObj);
+
+                                        //  alert(jsonString);
+
+
+                                        jQuery.ajax({
+                                            type: "POST",
+                                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_temp",
                 data:  {card_data: jsonString},
                 success: function(data) {
                     //alert('success json data: '+data);
@@ -579,4 +579,58 @@
              
         });
     });
+
+</script>
+<script type="text/javascript">
+
+window.onload = function() {
+    var detective = new Detector();
+    alert(detective.detect('arial'));
+};
+
+var Detector = function() {
+    // a font will be compared against all the three default fonts.
+    // and if it doesn't match all 3 then that font is not available.
+    var baseFonts = ['monospace', 'sans-serif', 'serif'];
+
+    //we use m or w because these two characters take up the maximum width.
+    // And we use a LLi so that the same matching fonts can get separated
+    var testString = "mmmmmmmmmmlli";
+
+    //we test using 72px font size, we may use any size. I guess larger the better.
+    var testSize = '72px';
+
+    var h = document.getElementsByTagName("body")[0];
+
+    // create a SPAN in the document to get the width of the text we use to test
+    var s = document.createElement("span");
+    s.style.fontSize = testSize;
+    s.innerHTML = testString;
+    var defaultWidth = {};
+    var defaultHeight = {};
+    for (var index in baseFonts) {
+        //get the default width for the three base fonts
+        s.style.fontFamily = baseFonts[index];
+        h.appendChild(s);
+        defaultWidth[baseFonts[index]] = s.offsetWidth; //width for the default font
+        defaultHeight[baseFonts[index]] = s.offsetHeight; //height for the defualt font
+        h.removeChild(s);
+    }
+
+    function detect(font) {
+        var detected = false;
+        for (var index in baseFonts) {
+            s.style.fontFamily = font + ',' + baseFonts[index]; // name of the font along with the base font for fallback.
+            h.appendChild(s);
+            var matched = (s.offsetWidth != defaultWidth[baseFonts[index]] || s.offsetHeight != defaultHeight[baseFonts[index]]);
+            h.removeChild(s);
+            detected = detected || matched;
+        }
+        return detected;
+    }
+
+    this.detect = detect;
+};
+
+
 </script>
