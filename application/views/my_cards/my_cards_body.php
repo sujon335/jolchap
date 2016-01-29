@@ -35,6 +35,7 @@
                                 <td class="cart_product">
                                     <a href=""><img src="<?php echo base_url(); ?>uploads/<?php echo $row->front_side; ?>" height="100" width="auto" alt=""></a>
                                     <br/><br/><a class="btn btn-success" onclick="get_text(<?php echo $row->design_id; ?>);" data-toggle="modal" data-target="#d-<?php echo $row->design_id; ?>">View Design</a>
+                                    <a class="btn btn-success" href="<?php echo base_url(); ?>index.php/product_details/edit_design_view/<?php echo $row->design_id; ?>">Edit Design</a>
                                 </td>
                                 <td class="cart_description">
                                     <p>Dimension: <?php echo $row->dimension; ?></p>
