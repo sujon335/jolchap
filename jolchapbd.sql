@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2016 at 09:38 AM
+-- Generation Time: Feb 03, 2016 at 08:32 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `message` text NOT NULL,
   `Total` varchar(50) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `order`
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `temp_order_design` (
   `design_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
