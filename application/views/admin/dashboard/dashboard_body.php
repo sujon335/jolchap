@@ -9,7 +9,16 @@
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-cart-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">New Order</span>
-                  <span class="info-box-number">10<small></small></span>
+                  <span class="info-box-number"><?php echo $new_order_count; ?><small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-print"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Processing</span>
+                  <span class="info-box-number"><?php echo $process_order_count; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -18,7 +27,7 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-print"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Printing</span>
-                  <span class="info-box-number">15</span>
+                  <span class="info-box-number"><?php echo $print_order_count; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -30,8 +39,8 @@
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fa fa-ship"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">TO Deliver</span>
-                  <span class="info-box-number">20</span>
+                  <span class="info-box-text">Shipping</span>
+                  <span class="info-box-number"><?php echo $shipping_order_count; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -39,8 +48,8 @@
               <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Registered Members</span>
-                  <span class="info-box-number">2,000</span>
+                  <span class="info-box-text">Reg Users</span>
+                  <span class="info-box-number"><?php echo $user_count; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->

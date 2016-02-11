@@ -12,22 +12,28 @@
  * @author dripto
  */
 class Checkout extends CI_Controller {
-
+    
+    public function __construct() {
+        parent::__construct();
+        date_default_timezone_set('Asia/Dhaka');
+    }
     //put your code here
     public function index() {
+        $user_id=$this->session->userdata('user_id');
+        
+        if(isset($user_id) == false || $user_id == false)
+            redirect('home');
+        
+        $this->load->model("orders");
         $is_logged_in = $this->session->userdata('is_logged_in_user');
         if (!isset($is_logged_in) || $is_logged_in != TRUE)
             redirect('login');
-        $user_id=$this->session->userdata('user_id');
+        
         $data=array();
         
 
-        $this->db->join('design', 'design.design_id=temp_order_design.design_id');
-        $this->db->join('products', 'products.id=design.product_id');
-        $this->db->where('temp_order_design.user_id', $user_id);
-        $query = $this->db->get('temp_order_design');
 
-        $data['design'] = $query->result();
+        $data['design'] = $this->orders->get_user_design($user_id);
         $header_data['header_name'] = "checkout";
         $this->load->view("common/header", $header_data);
         $this->load->view("checkout/checkout_body",$data);
@@ -48,17 +54,42 @@ class Checkout extends CI_Controller {
                 'design_id' => $design_id,
                 'quantity' => $quantity
             );
-            $in = $this->db->insert("temp_order_design", $array);
+            $in =$this->orders->add_user_design_order($array);
         }
     }
     public function save_order()
     {
+        $user_id=$this->session->userdata('user_id');
         $this->load->model("products");
+        $this->load->model("orders");
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('mobile_phone','required');
         if ($this->form_validation->run() == TRUE) {
-            $this->products->save_order_model();
+            
+            $array=array(
+            'user_id'=>$user_id,
+            'company_name'=>$this->input->post('company'),
+            'email'=>$this->input->post('email'),
+            'title'=>$this->input->post('title'),
+            'first_name'=>$this->input->post('first_name'),
+            'middle_name'=>$this->input->post('middle_name'),
+            'last_name'=>$this->input->post('last_name'),
+            'address1'=>$this->input->post('address1'),
+            'address2'=>$this->input->post('address2'),
+            'postal_code'=>$this->input->post('postal_code'),
+            'country'=>$this->input->post('country'),
+            'state'=>$this->input->post('state'),
+            'phone'=>$this->input->post('phone'),
+            'mobile_phone'=>$this->input->post('mobile_phone'),
+            'fax'=>$this->input->post('fax'),
+            'message'=>$this->input->post('message'),
+            'status' => 0,
+            'datetime' => $date = date('Y-m-d H:i:s', time())
+            );
+            
+            $this->orders->add($array);
+            
             redirect('home');
         }
         else {

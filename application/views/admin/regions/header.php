@@ -28,7 +28,9 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    
     <![endif]-->
+
   </head>
   <body class="hold-transition skin-yellow-light sidebar-mini">
     <div class="wrapper">
@@ -55,15 +57,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url(); ?>assets/admin_assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs"><?php echo $this->session->userdata('name'); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?php echo base_url(); ?>assets/admin_assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      Username
-                      <small>Member since Nov. 2012</small>
+                      <?php echo $this->session->userdata('name'); ?>
+                      
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -72,7 +74,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="<?php echo base_url(); ?>index.php/admin_auth/logout" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -126,17 +128,50 @@
                 </li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="<?php if(isset($parent_content_name) && $parent_content_name == "Orders") echo "active"; ?> treeview">
               <a href="#">
                 <i class="fa fa-cart-plus"></i>
                 <span>Orders</span>
-                <span class="label label-primary pull-right">4</span>
+                <!--<span class="label label-primary pull-right">4</span>-->
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>index.php/admin/new_order"><i class="fa fa-circle-o"></i>New Orders</a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/admin/printing_order"><i class="fa fa-circle-o"></i> Printing</a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/admin/shipping_order"><i class="fa fa-circle-o"></i> Shipping</a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/admin/delivered_product"><i class="fa fa-circle-o"></i>Delivered</a></li>
+                <li class="<?php if(isset($content_name) && $content_name == "New Orders") 
+                    echo "active"; ?>" >
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/new_orders">
+                            <i class="fa fa-circle-o"></i>New Orders
+                        </a>
+                </li>
+                <li class="<?php if(isset($content_name) && $content_name == "Processing Orders") 
+                    echo "active"; ?>" >
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/process_orders">
+                            <i class="fa fa-circle-o"></i>Processing Orders
+                        </a>
+                </li>
+                <li class="<?php if(isset($content_name) && $content_name == "Printing Orders") 
+                    echo "active"; ?>">
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/print_orders">
+                            <i class="fa fa-circle-o"></i> Printing
+                        </a>
+                </li>
+                
+                <li class="<?php if(isset($content_name) && $content_name == "Shipping Orders") 
+                    echo "active"; ?>">
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/shipping_orders">
+                            <i class="fa fa-circle-o"></i> Shipping
+                        </a>
+                </li>
+                <li class="<?php if(isset($content_name) && $content_name == "Delivered Orders") 
+                    echo "active"; ?>">
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/delivered_orders">
+                            <i class="fa fa-circle-o"></i>Delivered
+                        </a>
+                </li>
+                <li class="<?php if(isset($content_name) && $content_name == "Trash Orders") 
+                    echo "active"; ?>">
+                        <a href="<?php echo base_url(); ?>index.php/admin_order/trash_orders">
+                            <i class="fa fa-circle-o"></i>Trash
+                        </a>
+                </li>
               </ul>
             </li>
           </ul>

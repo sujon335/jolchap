@@ -97,6 +97,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Update</button>
+                        <a class="btn btn-primary" href="<?php echo base_url(); ?>/index.php/admin_design/show/<?php echo $product_details['id']; ?>">Edit Design</a>
                     </div>
                 </form>
             </div><!-- /.box -->

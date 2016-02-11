@@ -31,9 +31,12 @@
                 <div class="login-form"><!--login form-->
                     <h2>Login to your account</h2>
                     <form action="<?php echo base_url() ?>index.php/auth/login" method="post">
-                        <input type="text" name="email" placeholder="Email" />
+                        <input type="email" name="email" placeholder="Email" />
                         <input type="password" name="password" placeholder="Password" />
-
+                        <input type="hidden" name="login_captcha_id" value="<?php echo $login_captcha_id; ?>" />
+                        <input type="text" name="login_captcha" placeholder="Input the text shown below" />
+                        <?php echo $login_captcha['image']; ?>
+                        
                         <button type="submit" class="btn btn-default">Login</button>
                     </form>
                 </div><!--/login form-->
@@ -48,7 +51,12 @@
                         <input type="text" name="name" placeholder="Name"/>
                         <input type="email" name="email" placeholder="Email Address"/>
                         <input type="password" name="password" placeholder="Password"/>
-                        <button type="submit" class="btn btn-default">Signup</button>
+                        <input type="hidden" name="signup_captcha_id" value="<?php echo $signup_captcha_id; ?>" />
+                        <input type="text" name="signup_captcha" placeholder="Input the text shown below" />
+                        <?php echo $signup_captcha['image']; ?>
+                        
+                        
+                        <button type="submit" class="btn btn-default" style=" margin-top: 5px;">Signup</button>
                     </form>
                 </div><!--/sign up form-->
             </div>
@@ -59,21 +67,23 @@
                     <h2>Social Login</h2>
 
                     <a class="btn btn-lg btn-block btn-social btn-facebook" href="<?php echo $fb_login_url; ?>">
-                        <span class="fa fa-facebook"></span> Sign in with Facebook
+                        <span class="fa fa-facebook"></span> Login with Facebook
                     </a>
+                    <!--
                     <button class="btn btn-lg btn-block btn-social btn-google" id="google_login">
                         <span class="fa fa-google"></span> Sign in with Google
                     </button>
-                    <button class="btn btn-lg btn-block btn-social" onclick="signOut()">logout</button>
+                    -->
                     <span>
-                        <input type="checkbox" class="checkbox"> 
-                        Keep me signed in
+                        
                     </span>
+                    
 
                 </div><!--/login form-->
             </div>
 
         </div>
+        <div class="row" style="height: 250px;"></div>
         <div>
             <script>
                 $('#google_login').click(function () {

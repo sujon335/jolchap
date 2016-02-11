@@ -81,10 +81,12 @@
                             <div class="social-icons pull-right">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <!--
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    -->
                                 </ul>
                             </div>
                         </div>
@@ -111,23 +113,39 @@
                                             <i class="fa fa-star"></i> Wishlist
                                         </a>
                                     </li>
+                                    <?php
+                                        $user_id=$this->session->userdata('user_id');
+                                        if(isset($user_id) == true && $user_id != false):
+                                    ?>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/checkout"
                                            <?php if (isset($header_name) && $header_name == 'checkout') echo 'class="active"'; ?>>
                                             <i class="fa fa-crosshairs"></i> Checkout</a>
                                     </li>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/cart"
                                            <?php if (isset($header_name) && $header_name == 'cart') echo 'class="active"'; ?>>
                                             <i class="fa fa-shopping-cart"></i> Cart
                                         </a>
                                     </li>
+                                    <?php
+                                        $user_id=$this->session->userdata('user_id');
+                                        if(isset($user_id) == true && $user_id != false):
+                                    ?>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/myCards"
                                            <?php if (isset($header_name) && $header_name == 'myCards') echo 'class="active"'; ?>>
                                             <i class="fa fa-shopping-cart"></i> My Cards
                                         </a>
                                     </li>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    
                         <?php
                         $is_logged_in = $this->session->userdata('is_logged_in_user');
                         if (!isset($is_logged_in) || $is_logged_in != TRUE) {

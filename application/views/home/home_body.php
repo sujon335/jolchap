@@ -86,9 +86,9 @@
                                                 <img src="<?php echo base_url(); ?>uploads/<?php echo $product['featured_image']; ?>"
                                                  height="232px" width="auto" alt="" />
                                             </a>
-                                            <h2>$56</h2>
+                                            <h2>৳ <?php $data = explode("-", $product['dimension_price_1']); echo $data[1]; ?></h2>
                                             <p><?php echo $product['product_name']; ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-edit"></i>Customize</a>
+                                            <!--<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-edit"></i>Customize</a>-->
                                         </div>
                                         
                                     </div>
@@ -106,7 +106,11 @@
                                                             
                                                 </a>
                                             </li>
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                            <li>
+                                                <a href="<?php echo base_url(); ?>index.php/product_details/show/<?php echo $product['product_id']; ?>">
+                                                    <i class="fa fa-edit"></i>Customize
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

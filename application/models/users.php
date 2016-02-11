@@ -82,4 +82,10 @@ class users extends CI_Model{
             return FALSE;
         }
     }
+    
+    public function user_count(){
+        $count = $this->db->count_all_results('users');
+        
+        return  $count;
+    }
 }

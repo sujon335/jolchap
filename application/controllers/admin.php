@@ -12,13 +12,32 @@
  * @author habibullaharaphat
  */
 class Admin extends CI_Controller {
-
+    public function __construct() {
+        parent::__construct();
+        if($this->session->userdata('role') == false || $this->session->userdata('role')!= 'admin')
+            redirect ('admin_auth/login');
+    }
     //put your code here
     public function dashboard() {
+        $this->load->model('orders');
+        $this->load->model('users');
+        /*
+         * header data
+         */
         $header_data['content_name'] = "Dashboard";
         $header_data['parent_content_name'] = "Products";
+        
+        /*
+         * body data
+         */
+        $body_data['new_order_count'] = $this->orders->new_order_count();
+        $body_data['process_order_count'] = $this->orders->process_order_count();
+        $body_data['print_order_count'] = $this->orders->print_order_count();
+        $body_data['shipping_order_count'] = $this->orders->shipping_order_count();
+        $body_data['user_count'] = $this->users->user_count();
+        
         $this->load->view('admin/regions/header', $header_data);
-        $this->load->view('admin/dashboard/dashboard_body');
+        $this->load->view('admin/dashboard/dashboard_body', $body_data);
         $this->load->view('admin/regions/footer');
     }
 

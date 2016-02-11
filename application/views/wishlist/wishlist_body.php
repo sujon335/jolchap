@@ -54,7 +54,7 @@
 							</td>
 							
 							<td class="cart_total">
-                                                            <a class="btn btn-primary" href="#">Customize</a>
+                                                            <a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/product_details/show/<?php echo $product['id']  ?>">Customize</a>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="<?php echo base_url(); ?>index.php/wishlist/delete/<?php echo $product['id']; ?>/1"><i class="fa fa-times"></i></a>

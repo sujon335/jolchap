@@ -36,6 +36,9 @@
     <script src="<?php echo base_url(); ?>assets/admin_assets/plugins/select2/select2.full.min.js"></script>
     <!-- iCheck 1.0.1 -->
     <script src="<?php echo base_url(); ?>assets/admin_assets/plugins/iCheck/icheck.min.js"></script>
+    
+               
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jscolor.js"></script>
     <script>
       $(function () {
         //Initialize Select2 Elements
