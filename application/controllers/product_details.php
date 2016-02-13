@@ -73,18 +73,38 @@ class Product_details extends CI_Controller {
         if (isset($design_id)) {
             
             $logo_front=$obj[0]->logo_front;
-            $logo_back=$obj[0]->logo_back;
+            $logo_front_top=$obj[0]->logo_front_top;
+            $logo_front_left=$obj[0]->logo_front_left;
+            $logo_front_width=$obj[0]->logo_front_width;
+            $logo_front_height=$obj[0]->logo_front_height;
+            
             $image_data_front=array(
                 'design_id'=>$design_id,
                 'path'=>$logo_front,
-                'type'=>"front"
+                'type'=>"front",
+                'top'=>$logo_front_top,
+                'left'=>$logo_front_left,
+                'width'=>$logo_front_width,
+                'height'=>$logo_front_height
             );
+            if($logo_front!="")
             $this->products->save_card_image($image_data_front);
+            
+            $logo_back=$obj[0]->logo_back;
+            $logo_back_top=$obj[0]->logo_back_top;
+            $logo_back_left=$obj[0]->logo_back_left;
+            $logo_back_width=$obj[0]->logo_back_width;
+            $logo_back_height=$obj[0]->logo_back_height;
             $image_data_back=array(
                 'design_id'=>$design_id,
-                'path'=>$logo_front,
-                'type'=>"back"
+                'path'=>$logo_back,
+                'type'=>"back",
+                'top'=>$logo_back_top,
+                'left'=>$logo_back_left,
+                'width'=>$logo_back_width,
+                'height'=>$logo_back_height   
             );
+            if($logo_back!="")
             $this->products->save_card_image($image_data_back);
 
             $text_obj = $obj[0]->card_texts_front;
@@ -138,9 +158,6 @@ class Product_details extends CI_Controller {
             
             
 
-
-
-
         //sesssion // design table
     }
 
@@ -169,19 +186,39 @@ class Product_details extends CI_Controller {
         //$design_id = 5;
         if (isset($design_id)) {
             
-             $logo_front=$obj[0]->logo_front;
-            $logo_back=$obj[0]->logo_back;
+            $logo_front=$obj[0]->logo_front;
+            $logo_front_top=$obj[0]->logo_front_top;
+            $logo_front_left=$obj[0]->logo_front_left;
+            $logo_front_width=$obj[0]->logo_front_width;
+            $logo_front_height=$obj[0]->logo_front_height;
+
             $image_data_front=array(
                 'design_id'=>$design_id,
                 'path'=>$logo_front,
-                'type'=>"front"
+                'type'=>"front",
+                'top'=>$logo_front_top,
+                'left'=>$logo_front_left,
+                'width'=>$logo_front_width,
+                'height'=>$logo_front_height
             );
+            if($logo_front!="")
             $this->products->save_card_image($image_data_front);
+
+            $logo_back=$obj[0]->logo_back;
+            $logo_back_top=$obj[0]->logo_back_top;
+            $logo_back_left=$obj[0]->logo_back_left;
+            $logo_back_width=$obj[0]->logo_back_width;
+            $logo_back_height=$obj[0]->logo_back_height;
             $image_data_back=array(
                 'design_id'=>$design_id,
-                'path'=>$logo_front,
-                'type'=>"back"
+                'path'=>$logo_back,
+                'type'=>"back",
+                'top'=>$logo_back_top,
+                'left'=>$logo_back_left,
+                'width'=>$logo_back_width,
+                'height'=>$logo_back_height
             );
+            if($logo_back!="")
             $this->products->save_card_image($image_data_back);
 
             $text_obj = $obj[0]->card_texts_front;
@@ -268,8 +305,45 @@ class Product_details extends CI_Controller {
         $up=$this->products->update_design_data($design_id,$arr);
         
         $dlt=$this->products->delete_card_data($design_id);
+        $this->products->delete_card_image($design_id);
         
         if (isset($design_id)) {
+            $logo_front=$obj[0]->logo_front;
+            $logo_front_top=$obj[0]->logo_front_top;
+            $logo_front_left=$obj[0]->logo_front_left;
+            $logo_front_width=$obj[0]->logo_front_width;
+            $logo_front_height=$obj[0]->logo_front_height;
+
+            $image_data_front=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_front,
+                'type'=>"front",
+                'top'=>$logo_front_top,
+                'left'=>$logo_front_left,
+                'width'=>$logo_front_width,
+                'height'=>$logo_front_height
+            );
+            if($logo_front!="")
+            $this->products->save_card_image($image_data_front);
+
+            $logo_back=$obj[0]->logo_back;
+            $logo_back_top=$obj[0]->logo_back_top;
+            $logo_back_left=$obj[0]->logo_back_left;
+            $logo_back_width=$obj[0]->logo_back_width;
+            $logo_back_height=$obj[0]->logo_back_height;
+            $image_data_back=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_back,
+                'type'=>"back",
+                'top'=>$logo_back_top,
+                'left'=>$logo_back_left,
+                'width'=>$logo_back_width,
+                'height'=>$logo_back_height
+            );
+            if($logo_back!="")
+            $this->products->save_card_image($image_data_back);
+
+
             $text_obj = $obj[0]->card_texts_front;
             for ($i = 0; $i < sizeof($text_obj); $i++) {
                 $var = $text_obj["$i"];

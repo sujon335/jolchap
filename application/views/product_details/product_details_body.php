@@ -742,10 +742,33 @@
                                         design_item["dimension"]=dimension;
                                         design_item["paper"]=paper;
                                         design_item["lamination"]=lamination;
-                                        var logo_front=$("#logo").css("src");
-                                        var logo_back=$("#logo_back").css("src");
+
+                                        var logo_front=$("#logo").attr("src");
+                                        var logo_front_top=$("#logo").css("top");
+                                        var logo_front_left=$("#logo").css("left");
+                                        var logo_front_width=$("#logo").css("width");
+                                        var logo_front_height=$("#logo").css("height");
+                                        
+                                        var logo_back=$("#logo_back").attr("src");
+                                        var logo_back_top=$("#logo_back").css("top");
+                                        var logo_back_left=$("#logo_back").css("left");
+                                        var logo_back_width=$("#logo_back").css("width");
+                                        var logo_back_height=$("#logo_back").css("height");
+
                                         design_item["logo_front"]=logo_front;
+                                        design_item["logo_front_top"]=logo_front_top;
+                                        design_item["logo_front_left"]=logo_front_left;
+                                        design_item["logo_front_width"]=logo_front_width;
+                                        design_item["logo_front_height"]=logo_front_height;
+
+
+                                       
                                         design_item["logo_back"]=logo_back;
+                                        design_item["logo_back_top"]=logo_back_top;
+                                        design_item["logo_back_left"]=logo_back_left;
+                                        design_item["logo_back_width"]=logo_back_width;
+                                        design_item["logo_back_height"]=logo_back_height;
+
                                         var textDataJsonObj = [];
                                         $('#frontcard').children('div').each(function () {
 
@@ -834,10 +857,31 @@
                                         design_item["dimension"]=dimension;
                                         design_item["paper"]=paper;
                                         design_item["lamination"]=lamination;
-                                        var logo_front=$("#logo").css("src");
-                                        var logo_back=$("#logo_back").css("src");
+                                        var logo_front=$("#logo").attr("src");
+                                        var logo_front_top=$("#logo").css("top");
+                                        var logo_front_left=$("#logo").css("left");
+                                        var logo_front_width=$("#logo").css("width");
+                                        var logo_front_height=$("#logo").css("height");
+
+                                        var logo_back=$("#logo_back").attr("src");
+                                        var logo_back_top=$("#logo_back").css("top");
+                                        var logo_back_left=$("#logo_back").css("left");
+                                        var logo_back_width=$("#logo_back").css("width");
+                                        var logo_back_height=$("#logo_back").css("height");
+
                                         design_item["logo_front"]=logo_front;
+                                        design_item["logo_front_top"]=logo_front_top;
+                                        design_item["logo_front_left"]=logo_front_left;
+                                        design_item["logo_front_width"]=logo_front_width;
+                                        design_item["logo_front_height"]=logo_front_height;
+
+
+                                        
                                         design_item["logo_back"]=logo_back;
+                                        design_item["logo_back_top"]=logo_back_top;
+                                        design_item["logo_back_left"]=logo_back_left;
+                                        design_item["logo_back_width"]=logo_back_width;
+                                        design_item["logo_back_height"]=logo_back_height;
                                         var textDataJsonObj = [];
                                         $('#frontcard').children('div').each(function () {
 

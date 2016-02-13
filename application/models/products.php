@@ -198,7 +198,12 @@ class Products extends CI_Model {
         $this->db->where('design_id',$design_id)
                 ->delete('card_text');
     }
-    public function save_design_user($user_id,$design_id_test)
+     public function delete_card_image($design_id) {
+        $this->db->where('design_id',$design_id)
+                ->delete('card_logo');
+    }
+
+    public function save_design_ofuser($user_id,$design_id_test)
     {
         $arr = array(
             'user_id' => $user_id

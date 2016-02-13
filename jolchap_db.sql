@@ -1,20 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 10, 2016 at 06:14 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: Feb 13, 2016 at 12:46 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `jolchap_db`
@@ -26,13 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin_users`
 --
 
-CREATE TABLE `admin_users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `role` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `role` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admin_users`
@@ -47,12 +48,14 @@ INSERT INTO `admin_users` (`id`, `email`, `password`, `name`, `role`) VALUES
 -- Table structure for table `captcha`
 --
 
-CREATE TABLE `captcha` (
-  `captcha_id` bigint(13) UNSIGNED NOT NULL,
-  `captcha_time` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `captcha` (
+  `captcha_id` bigint(13) unsigned NOT NULL AUTO_INCREMENT,
+  `captcha_time` int(10) unsigned NOT NULL,
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `word` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `word` varchar(20) NOT NULL,
+  PRIMARY KEY (`captcha_id`),
+  KEY `word` (`word`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=150 ;
 
 --
 -- Dumping data for table `captcha`
@@ -148,7 +151,66 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUE
 (87, 1454769662, '::1', '011b1'),
 (88, 1454776268, '::1', '5e9fb'),
 (89, 1454776268, '::1', 'b723a'),
-(90, 1454776603, '::1', '94db9');
+(90, 1454776603, '::1', '94db9'),
+(91, 1455179617, '::1', '964f7'),
+(92, 1455179618, '::1', '9a59f'),
+(93, 1455179643, '::1', '24d27'),
+(94, 1455179643, '::1', '42f7d'),
+(95, 1455180452, '::1', '5808f'),
+(96, 1455180840, '::1', 'db4d6'),
+(97, 1455180866, '::1', 'dbb16'),
+(98, 1455180866, '::1', '1686e'),
+(99, 1455180891, '::1', '7b1ca'),
+(100, 1455180891, '::1', 'ac0dc'),
+(101, 1455180908, '::1', 'fb490'),
+(102, 1455180909, '::1', '7e117'),
+(103, 1455181873, '::1', '5fa32'),
+(104, 1455181873, '::1', '663bc'),
+(105, 1455182337, '::1', '49fe4'),
+(106, 1455182337, '::1', '31c4f'),
+(107, 1455182547, '::1', 'bafff'),
+(108, 1455182547, '::1', '072cb'),
+(109, 1455182902, '::1', '772b3'),
+(110, 1455182902, '::1', 'ba975'),
+(111, 1455183074, '::1', '72565'),
+(112, 1455183074, '::1', 'a7d53'),
+(113, 1455183160, '::1', '1243c'),
+(114, 1455183160, '::1', 'b2ec7'),
+(115, 1455183239, '::1', '13c89'),
+(116, 1455183239, '::1', 'f0762'),
+(117, 1455183333, '::1', '8ef82'),
+(118, 1455183334, '::1', 'e85de'),
+(119, 1455183419, '::1', 'bc9d9'),
+(120, 1455183419, '::1', '03946'),
+(121, 1455183526, '::1', '1c29b'),
+(122, 1455183526, '::1', '7fca0'),
+(123, 1455183628, '::1', '3a2cf'),
+(124, 1455183628, '::1', '9d3d3'),
+(125, 1455183758, '::1', '7d039'),
+(126, 1455183758, '::1', 'b589f'),
+(127, 1455183943, '::1', 'a3742'),
+(128, 1455183943, '::1', '2f694'),
+(129, 1455184772, '::1', 'f1eb2'),
+(130, 1455184772, '::1', '7dbf8'),
+(131, 1455186007, '::1', 'ed2c8'),
+(132, 1455186007, '::1', '2d3c8'),
+(133, 1455186667, '::1', 'd3cd9'),
+(134, 1455186667, '::1', 'b7c9c'),
+(135, 1455359341, '::1', '7c414'),
+(136, 1455359341, '::1', 'd1e38'),
+(137, 1455361253, '::1', 'ff32a'),
+(138, 1455361253, '::1', '1e58f'),
+(139, 1455362574, '::1', 'cdd02'),
+(140, 1455362575, '::1', '65773'),
+(141, 1455362747, '::1', '395af'),
+(142, 1455362747, '::1', '0420e'),
+(143, 1455363051, '::1', '78538'),
+(144, 1455363051, '::1', '4753f'),
+(145, 1455363235, '::1', '03c6c'),
+(146, 1455363235, '::1', '34a57'),
+(147, 1455363469, '::1', 'cbd91'),
+(148, 1455363469, '::1', '03512'),
+(149, 1455363564, '::1', 'ab4ff');
 
 -- --------------------------------------------------------
 
@@ -156,12 +218,25 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUE
 -- Table structure for table `card_logo`
 --
 
-CREATE TABLE `card_logo` (
-  `id` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `card_logo` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `design_id` int(10) NOT NULL,
   `path` text NOT NULL,
-  `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` varchar(20) NOT NULL,
+  `top` varchar(50) NOT NULL,
+  `left` varchar(50) NOT NULL,
+  `height` varchar(50) NOT NULL,
+  `width` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `card_logo`
+--
+
+INSERT INTO `card_logo` (`id`, `design_id`, `path`, `type`, `top`, `left`, `height`, `width`) VALUES
+(5, 31, 'http://localhost/jolchapbd/uploads/3d52c0ea81be725b21ef9d6cd65644e1.jpg', 'front', '52.5px', '177.844px', '115px', '115px'),
+(6, 31, 'http://localhost/jolchapbd/uploads/81c47e04a3009dd3481996cd6fa0f799.jpg', 'back', '54px', '27.344px', '123px', '123px');
 
 -- --------------------------------------------------------
 
@@ -169,8 +244,8 @@ CREATE TABLE `card_logo` (
 -- Table structure for table `card_text`
 --
 
-CREATE TABLE `card_text` (
-  `id` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `card_text` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `design_id` int(10) NOT NULL,
   `text` text NOT NULL,
   `color` varchar(50) NOT NULL,
@@ -178,54 +253,26 @@ CREATE TABLE `card_text` (
   `font_size` varchar(50) NOT NULL,
   `top_pos` varchar(50) NOT NULL,
   `left_pos` varchar(50) NOT NULL,
-  `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=86 ;
 
 --
 -- Dumping data for table `card_text`
 --
 
 INSERT INTO `card_text` (`id`, `design_id`, `text`, `color`, `font_family`, `font_size`, `top_pos`, `left_pos`, `type`) VALUES
-(6, 1, 'Sydur Rahaman', 'rgb(251, 255, 25)', 'Roboto, sans-serif', '19px', '60px', '120px', 'front'),
-(7, 1, 'Software Engineer', 'rgb(82, 148, 255)', 'Roboto, sans-serif', '14px', '93px', '176.344px', 'front'),
-(8, 1, 'sujon335@yahoo.com', 'rgb(184, 255, 31)', 'Roboto, sans-serif', '14px', '250px', '350px', 'front'),
-(9, 1, '+8801673941126', 'rgb(25, 255, 236)', 'Roboto, sans-serif', '14px', '274px', '373.344px', 'front'),
-(10, 2, 'bahar', 'rgb(255, 230, 41)', 'Roboto, sans-serif', '19px', '60px', '120px', 'front'),
-(11, 2, 'engineer', 'rgb(31, 117, 255)', 'Algerian', '19px', '35.5px', '116.844px', 'front'),
-(12, 2, 'bahar@yahoo.com', 'rgb(126, 255, 46)', 'Roboto, sans-serif', '14px', '301px', '53.844px', 'front'),
-(13, 2, '016474599555', 'rgb(128, 249, 255)', 'Roboto, sans-serif', '14px', '324px', '91.344px', 'front'),
-(14, 3, 'Rishad Rizwan', 'rgb(51, 143, 255)', 'Roboto, sans-serif', '14px', '30px', '73.8438px', 'front'),
-(15, 3, 'ME', 'rgb(193, 255, 36)', 'Roboto, sans-serif', '14px', '52px', '75.844px', 'front'),
-(16, 3, 'rrr@gmail.com', 'rgb(56, 126, 255)', 'Roboto, sans-serif', '19px', '270px', '305.344px', 'front'),
-(17, 3, '016754425265', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '300px', '350px', 'front'),
-(18, 4, 'hello', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '60px', '120px', 'front'),
-(19, 4, 'there', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '80px', '150px', 'front'),
-(20, 4, '', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '250px', '350px', 'front'),
-(21, 4, '', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '300px', '350px', 'front'),
-(22, 5, 'fdfdfdf', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '200px', '200px', 'front'),
-(37, 6, '   fdfddfdf', 'rgb(110, 170, 255)', 'Roboto, sans-serif', '34px', '200px', '200px', 'front'),
-(38, 6, '   fdfdfdfdfdf', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '200px', '200px', 'front'),
-(39, 6, '  gdfgdfg', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '263px', '156.844px', 'front'),
-(40, 6, ' abc', 'rgb(255, 231, 48)', 'Roboto, sans-serif', '24px', '129px', '59.844px', 'front'),
-(41, 6, 'jhjkhjkhkjh', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '130px', '246.344px', 'front'),
-(42, 7, 'retetert', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(43, 7, 'fsdfsdfsf', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '252px', '254.172px', 'front'),
-(44, 7, 'sdfs', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(45, 7, 'fssdfs', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '179px', '304.172px', 'front'),
-(46, 7, 'sdfsdf', 'rgb(64, 77, 255)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '24px', '114px', '232.672px', 'front'),
-(47, 8, 'fdgdfg', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(48, 8, 'dfgdfg', 'rgb(38, 118, 255)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '24px', '229px', '204.672px', 'front'),
-(49, 9, 'jhghj', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(50, 9, 'ghjghj', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '230px', '236.172px', 'front'),
-(51, 10, 'fdgdfg', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(52, 10, 'dfgdfg', 'rgb(38, 118, 255)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '24px', '229px', '204.672px', 'front'),
-(53, 10, 'dsfsfdsf123', 'rgb(255, 150, 229)', 'Roboto, sans-serif', '49px', '200px', '200px', 'front'),
-(54, 11, 'fdgdfg', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(55, 11, 'dfgdfg', 'rgb(38, 118, 255)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '24px', '229px', '204.672px', 'front'),
-(56, 12, 'fdgdfg', 'rgb(51, 51, 51)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '14px', '200px', '200px', 'front'),
-(57, 12, 'dfgdfg', 'rgb(38, 118, 255)', '''Source Sans Pro'', ''Helvetica Neue'', Helvetica, Ar', '24px', '229px', '204.672px', 'front'),
-(58, 13, 'Habibullah Araphat', 'rgb(36, 178, 255)', '''Agency FB''', '24px', '124px', '53.344px', 'front'),
-(59, 14, 'Habibullah araphat', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '134px', '89.344px', 'front');
+(62, 15, 'sydur Rahaman sujon', 'rgb(13, 17, 255)', 'Roboto, sans-serif', '19px', '200px', '200px', 'front'),
+(63, 15, ' sujon335@yahoo.com', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '229px', '228.844px', 'front'),
+(66, 16, ' Rishad Rizwan', 'rgb(31, 64, 255)', 'Roboto, sans-serif', '19px', '80.5px', '53.844px', 'front'),
+(67, 16, 'ME Engineer', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '14px', '119px', '119.344px', 'front'),
+(72, 27, 'hobe re hobe', 'rgb(51, 51, 51)', 'Roboto, sans-serif', '19px', '200px', '200px', 'front'),
+(76, 29, 'Sydur', 'rgb(42, 31, 255)', 'Roboto, sans-serif', '24px', '80px', '108.844px', 'front'),
+(77, 29, 'software Engineer', 'rgb(97, 168, 255)', 'Roboto, sans-serif', '19px', '146.5px', '202.844px', 'front'),
+(78, 29, 'Rahaman', 'rgb(23, 255, 35)', 'Roboto, sans-serif', '19px', '124.5px', '243.344px', 'back'),
+(79, 29, 'sujon', 'rgb(255, 56, 219)', 'Roboto, sans-serif', '14px', '169px', '301.344px', 'back'),
+(84, 31, 'okkkkk', 'rgb(31, 79, 255)', 'Roboto, sans-serif', '24px', '200px', '200px', 'front'),
+(85, 31, 'jonas', 'rgb(202, 66, 255)', 'Roboto, sans-serif', '24px', '118px', '244.344px', 'back');
 
 -- --------------------------------------------------------
 
@@ -233,33 +280,25 @@ INSERT INTO `card_text` (`id`, `design_id`, `text`, `color`, `font_family`, `fon
 -- Table structure for table `design`
 --
 
-CREATE TABLE `design` (
-  `design_id` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `design` (
+  `design_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `dimension` varchar(50) NOT NULL,
   `paper` varchar(50) NOT NULL,
-  `lamination` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `lamination` varchar(50) NOT NULL,
+  PRIMARY KEY (`design_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `design`
 --
 
 INSERT INTO `design` (`design_id`, `user_id`, `product_id`, `dimension`, `paper`, `lamination`) VALUES
-(1, 1, 12, '4x6', 'Paper 1', 'Glossy'),
-(2, 3, 11, '3x5', 'Paper 2', 'Matt'),
-(3, 1, 14, '4x6', 'Paper 1', 'Matt'),
-(4, 2, 14, '3x5', 'Paper 1', 'Matt'),
-(5, 2, 12, '3x5', 'Paper 1', 'Matt'),
-(6, 2, 12, '3x5', 'Paper 1', 'Matt'),
-(7, 2, 12, '3x5', 'Paper 1', 'Matt'),
-(8, -1, 12, '3x5', 'Paper 1', 'Matt'),
-(10, 2, 12, '3x5', 'Paper 1', 'Matt'),
-(11, 0, 12, '3x5', 'Paper 1', 'Matt'),
-(12, 0, 12, '3x5', 'Paper 1', 'Matt'),
-(13, 0, 13, '4x6', 'Paper 2', 'Glossy'),
-(14, 2, 13, '3x5', 'Paper 1', 'Matt');
+(15, 1, 16, '3x5', 'Paper 1', 'Matt'),
+(16, 1, 15, '3x5', 'Paper 1', 'Matt'),
+(29, 3, 16, '3x5', 'Paper 1', 'Matt'),
+(31, 3, 15, '3x5', 'Paper 1', 'Matt');
 
 -- --------------------------------------------------------
 
@@ -267,10 +306,11 @@ INSERT INTO `design` (`design_id`, `user_id`, `product_id`, `dimension`, `paper`
 -- Table structure for table `featured_products`
 --
 
-CREATE TABLE `featured_products` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `featured_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `featured_products`
@@ -287,8 +327,8 @@ INSERT INTO `featured_products` (`id`, `product_id`) VALUES
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `company_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -307,16 +347,9 @@ CREATE TABLE `orders` (
   `message` text NOT NULL,
   `Total` varchar(50) NOT NULL,
   `status` int(11) NOT NULL,
-  `datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `user_id`, `company_name`, `email`, `title`, `first_name`, `middle_name`, `last_name`, `address1`, `address2`, `postal_code`, `country`, `state`, `phone`, `mobile_phone`, `fax`, `message`, `Total`, `status`, `datetime`) VALUES
-(2, 1, 'abc', 'sujon335@yahoo.com', '"Countdown of cultural night" ', 'Saidur ', '', 'Rahman', 'House NO:60 BLOCK :B ROAD NO: 3 ', '0', '0', 'Bangladesh', 'Bangladesh', '', '+8801673941126', '', '', '', 4, '0000-00-00 00:00:00'),
-(3, 2, 'test', 'my email', 'test', 'my name', 'my m name', 'my L name', 'a1', '0', '0', 'Bangladesh', '-- State / Province / Region --', '+8801710358518', '123456', '123', '1', '', -1, '0000-00-00 00:00:00');
+  `datetime` datetime NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -324,20 +357,13 @@ INSERT INTO `orders` (`order_id`, `user_id`, `company_name`, `email`, `title`, `
 -- Table structure for table `order_design`
 --
 
-CREATE TABLE `order_design` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `order_design` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `design_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `order_design`
---
-
-INSERT INTO `order_design` (`id`, `order_id`, `design_id`, `quantity`) VALUES
-(1, 3, 1, 2),
-(2, 3, 3, 5);
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -345,8 +371,8 @@ INSERT INTO `order_design` (`id`, `order_id`, `design_id`, `quantity`) VALUES
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `product_description` varchar(500) NOT NULL,
   `product_unit` int(11) NOT NULL,
@@ -355,8 +381,9 @@ CREATE TABLE `products` (
   `back_side` varchar(250) NOT NULL,
   `dimension_price_1` varchar(30) NOT NULL,
   `dimension_price_2` varchar(30) NOT NULL,
-  `dimension_price_3` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `dimension_price_3` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `products`
@@ -368,7 +395,8 @@ INSERT INTO `products` (`id`, `product_name`, `product_description`, `product_un
 (-12, 'featured product', 'product description.', 500, 'a48b24e9d93d0c25b79cecf9320293c1.jpg', 'bc2d45301c8447dd67b80a7a3ee68345.jpg', '09b4e5cb2b3fb2d66ab792de5bd2eb00.jpg', '5x6-200', '4x5-300', '5x6-250'),
 (-11, 'Creative visual product 20', 'product desc 10 200', 500, 'dd6cde2e9ac5c2b5f233400b3fd8bf25.jpg', 'e6b3142aa656d5b045849298245d47ed.jpg', 'd36c82a5b718cbd7ae07af8390e8e2b4.jpg', '3x3-300', '5x5-800', '7x7-1000'),
 (-10, 'my product one', 'product description', 500, '5ca3cf7fbce770e3314713bba98688ae.jpg', '35dfddeb196183daa2198e99fb508fc9.jpg', '31df348174ccb4fa32dcb4294b99edb0.jpg', '1-10', '2-20', '3-30'),
-(15, 'Business Card', 'Fine quality product.', 500, '6534fde339b9e2099b445be10b2c31c7.jpeg', '88d152646d0b0761dfee2c9097da8163.jpeg', '8baef79fb776c7a2f3cf0104a87094a7.jpeg', '2x3-200', '3x5-300', '4x5-325');
+(15, 'Business Card', 'Fine quality product.', 500, '6534fde339b9e2099b445be10b2c31c7.jpeg', '88d152646d0b0761dfee2c9097da8163.jpeg', '8baef79fb776c7a2f3cf0104a87094a7.jpeg', '2x3-200', '3x5-300', '4x5-325'),
+(16, 'sample', 'descript', 500, '8ae12b6d058d6f77034547f3cc381ef0.jpg', '7c5179549ce01b1dede52e92cf39a1fb.jpg', '78c5d26193a73efb03fd2d37300e5dc8.jpg', '2*2-100', '3*3-200', '5*7-300');
 
 -- --------------------------------------------------------
 
@@ -376,10 +404,11 @@ INSERT INTO `products` (`id`, `product_name`, `product_description`, `product_un
 -- Table structure for table `recommended_products`
 --
 
-CREATE TABLE `recommended_products` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `recommended_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `recommended_products`
@@ -398,19 +427,13 @@ INSERT INTO `recommended_products` (`id`, `product_id`) VALUES
 -- Table structure for table `temp_order_design`
 --
 
-CREATE TABLE `temp_order_design` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `temp_order_design` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `design_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `temp_order_design`
---
-
-INSERT INTO `temp_order_design` (`id`, `user_id`, `design_id`, `quantity`) VALUES
-(1, 2, 4, 3);
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -418,14 +441,15 @@ INSERT INTO `temp_order_design` (`id`, `user_id`, `design_id`, `quantity`) VALUE
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `name` varchar(250) NOT NULL,
   `fb_id` varchar(250) NOT NULL,
-  `gmail_id` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `gmail_id` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `users`
@@ -439,142 +463,6 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `fb_id`, `gmail_id`) VAL
 (5, 'hey@fuck.com', '123', 'Habib Araphat', '', ''),
 (6, '', '', 'Konok Habibullah Araphat', '10201272362647010', '');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin_users`
---
-ALTER TABLE `admin_users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `captcha`
---
-ALTER TABLE `captcha`
-  ADD PRIMARY KEY (`captcha_id`),
-  ADD KEY `word` (`word`);
-
---
--- Indexes for table `card_logo`
---
-ALTER TABLE `card_logo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `card_text`
---
-ALTER TABLE `card_text`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `design`
---
-ALTER TABLE `design`
-  ADD PRIMARY KEY (`design_id`);
-
---
--- Indexes for table `featured_products`
---
-ALTER TABLE `featured_products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Indexes for table `order_design`
---
-ALTER TABLE `order_design`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `recommended_products`
---
-ALTER TABLE `recommended_products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `temp_order_design`
---
-ALTER TABLE `temp_order_design`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin_users`
---
-ALTER TABLE `admin_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `captcha`
---
-ALTER TABLE `captcha`
-  MODIFY `captcha_id` bigint(13) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
---
--- AUTO_INCREMENT for table `card_text`
---
-ALTER TABLE `card_text`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
---
--- AUTO_INCREMENT for table `design`
---
-ALTER TABLE `design`
-  MODIFY `design_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `featured_products`
---
-ALTER TABLE `featured_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `order_design`
---
-ALTER TABLE `order_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `recommended_products`
---
-ALTER TABLE `recommended_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `temp_order_design`
---
-ALTER TABLE `temp_order_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

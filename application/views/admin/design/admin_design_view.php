@@ -21,7 +21,15 @@
                                             <div class="brands_products"><!--brands_products-->
                                                 <h2>Front Texts</h2>
                                                 <div class="brands-name">
-
+                                                    <form enctype="multipart/form-data" id="icon_image" name="icon_image">
+                                                        <label>Upload image</label>
+                                                        <div class="form-group">
+                                                        <input type="file" id="front_side" name="card_icon">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-success">Upload</button>
+                                                        </div>
+                                                    </form>
                                                     <form>
 
                                                         <div class="form-group">
