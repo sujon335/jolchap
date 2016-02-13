@@ -71,7 +71,23 @@ class Product_details extends CI_Controller {
         
    
         if (isset($design_id)) {
-            $text_obj = $obj[0]->card_texts;
+            
+            $logo_front=$obj[0]->logo_front;
+            $logo_back=$obj[0]->logo_back;
+            $image_data_front=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_front,
+                'type'=>"front"
+            );
+            $this->products->save_card_image($image_data_front);
+            $image_data_back=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_front,
+                'type'=>"back"
+            );
+            $this->products->save_card_image($image_data_back);
+
+            $text_obj = $obj[0]->card_texts_front;
             for ($i = 0; $i < sizeof($text_obj); $i++) {
                 $var = $text_obj["$i"];
                 $font_size = $var->font_size;
@@ -80,7 +96,7 @@ class Product_details extends CI_Controller {
                 $color = $var->color;
                 $top = $var->top;
                 $left = $var->left;
-                $array = array(
+                $data = array(
                     'design_id' => $design_id,
                     'font_size' => $font_size,
                     'font_family' => $font_family,
@@ -90,15 +106,37 @@ class Product_details extends CI_Controller {
                     'color' => $color,
                     'type' => "front"
                 );
-                $in = $this->products->save_card_data($array);
+                $in = $this->products->save_card_data($data);
+            }
+             $text_obj_back = $obj[0]->card_texts_back;
+            for ($i = 0; $i < sizeof($text_obj_back); $i++) {
+                $var = $text_obj_back["$i"];
+                $font_size = $var->font_size;
+                $font_family = $var->font_family;
+                $text = $var->text;
+                $color = $var->color;
+                $top = $var->top;
+                $left = $var->left;
+                $data = array(
+                    'design_id' => $design_id,
+                    'font_size' => $font_size,
+                    'font_family' => $font_family,
+                    'text' => $text,
+                    'top_pos' => $top,
+                    'left_pos' => $left,
+                    'color' => $color,
+                    'type' => "back"
+                );
+                $in = $this->products->save_card_data($data);
             }
         }
 
             $auth_data = array(
-                'design_id' => $design_id,
+                'design_id_test' => $design_id,
             );
             $this->session->set_userdata($auth_data);
-
+            
+            
 
 
 
@@ -130,6 +168,22 @@ class Product_details extends CI_Controller {
         $design_id = $this->products->save_design($data);
         //$design_id = 5;
         if (isset($design_id)) {
+            
+             $logo_front=$obj[0]->logo_front;
+            $logo_back=$obj[0]->logo_back;
+            $image_data_front=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_front,
+                'type'=>"front"
+            );
+            $this->products->save_card_image($image_data_front);
+            $image_data_back=array(
+                'design_id'=>$design_id,
+                'path'=>$logo_front,
+                'type'=>"back"
+            );
+            $this->products->save_card_image($image_data_back);
+
             $text_obj = $obj[0]->card_texts_front;
             for ($i = 0; $i < sizeof($text_obj); $i++) {
                 $var = $text_obj["$i"];
@@ -192,6 +246,7 @@ class Product_details extends CI_Controller {
         $body_data['design_info']=$this->products->get_design_data($design_id);
 
         $body_data['card_info']=$this->products->get_card_data($design_id);
+        $body_data['card_image']=$this->products->get_card_image($design_id);
         $this->load->view("common/header", $header_data);
         $this->load->view("product_details/product_details_body_edit", $body_data);
         $this->load->view("common/footer");
@@ -263,6 +318,32 @@ class Product_details extends CI_Controller {
         
         
         //sesssion // design table
+    }
+
+
+    public function upload_icon_image()
+    {
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '4096';
+        $config['max_width'] = '0';
+        $config['max_height'] = '0';
+
+        $flag = TRUE;
+        $this->load->library('upload', $config);
+
+        $config['file_name'] = md5("1" . time());
+        $this->upload->initialize($config);
+        $flag = $flag && $this->upload->do_upload("card_icon");
+        if ($flag) {
+            /*
+             * featured image file processing
+             */
+            $data = $this->upload->data();
+            $image_file = $data['file_name'];
+        }
+        echo $image_file;
     }
 
 }

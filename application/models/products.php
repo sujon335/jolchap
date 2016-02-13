@@ -134,7 +134,11 @@ class Products extends CI_Model {
         $ins=$this->db->insert("card_text", $data);
         return $ins;
     }
-     
+     public function save_card_image($data){
+
+        $ins=$this->db->insert("card_logo", $data);
+        return $ins;
+    }
     public function get_design_id($product_id,$user_id)
     {
         $design_id=-1;
@@ -176,7 +180,13 @@ class Products extends CI_Model {
         $q=  $this->db->get('card_text');
         return $q->result();
     }
-    
+    public function get_card_image($design_id)
+    {
+        $this->db->where('design_id',$design_id);
+        $q=  $this->db->get('card_logo');
+        return $q->result();
+    }
+
     public function update_design_data($design_id,$arr)
     {
         $this->db->where('design_id',$design_id);
@@ -188,4 +198,15 @@ class Products extends CI_Model {
         $this->db->where('design_id',$design_id)
                 ->delete('card_text');
     }
+    public function save_design_user($user_id,$design_id_test)
+    {
+        $arr = array(
+            'user_id' => $user_id
+        );
+
+        $this->db->where('design_id', $design_id_test);
+        $this->db->update('design', $arr);
+    }
+
+
 }

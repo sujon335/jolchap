@@ -38,11 +38,11 @@
                                     <td><?php echo $product['product_description']; ?></td>
                                     <td><?php echo $product['product_unit']; ?></td>
                                     <td><img src="<?php echo base_url(); ?>uploads/<?php echo $product['featured_image']; ?>" 
-                                             class="img-rounded" alt="card view" width="100" height="auto"> 
+                                             class="img-rounded" alt="card view" width="100" height="100">
                                         <img src="<?php echo base_url(); ?>uploads/<?php echo $product['front_side']; ?>" 
-                                             class="img-rounded" alt="card view" width="100" height="auto"> 
+                                             class="img-rounded" alt="card view" width="100" height="100">
                                         <img src="<?php echo base_url(); ?>uploads/<?php echo $product['back_side']; ?>" 
-                                             class="img-rounded" alt="card view" width="100" height="auto"> </td>
+                                             class="img-rounded" alt="card view" width="100" height="100"> </td>
                                     <td>
                                         <span class="badge bg-blug"><?php echo $product['dimension_price_1']; ?></span><br>
                                         <span class="badge bg-green"><?php echo $product['dimension_price_2']; ?></span><br>

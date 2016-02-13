@@ -140,22 +140,22 @@
 
 
 
-                                                        
+
 
                                                         <?php
                                                             $my_count = 1;
                                                             foreach($card_info as $card):
                                                               if($card->type=="front"){
-                                                                
+
                                                         ?>
-                                                        
+
                                                         <div class="form-group">
                                                             <input  type="text"
                                                                     class="abc form-control" id="<?php echo $my_count; ?>"
                                                                     placeholder="Enter Name Here" value="<?php echo $card->text; ?>" >
                                                         </div>
                                                         <?php $my_count++;} endforeach; ?>
-                                                        
+
                                                         <?php for($my_count; $my_count<= 15; $my_count++): ?>
                                                             <div class="form-group">
                                                                 <input  type="text"
@@ -163,9 +163,9 @@
                                                                     placeholder="Enter Name Here" style="display:none;" >
                                                             </div>
                                                         <?php endfor; ?>
-                                                        
-                                                        
-                                                        
+
+
+
 
                                                         <div class="form-group">
                                                             <button  class="form-control" id="add-another">Add another</button>
@@ -186,29 +186,29 @@
                                                          if (isset($card_info)):
                                                              $i = 1;
                                                             // var_dump($card_info);
-                                                             
+
                                                              foreach ($card_info as $card):
                                                                  if($card->type=="front"){
-                                                               
-                                                                 
+
+
                                                          ?>
-                                                            <div class="drag" id="div<?php echo $i;?>" 
+                                                            <div class="drag" id="div<?php echo $i;?>"
                                                                  style="cursor: move;position: absolute;
                                                                  font-family: <?php echo $card->font_family ?>;font-size: <?php echo $card->font_size ?>;
                                                                  color: <?php echo $card->color ?>;left: <?php echo $card->left_pos ?>;
                                                                  top: <?php echo $card->top_pos ?>;"
                                                             > <?php echo $card->text; ?></div>
 
-                                                            <?php      
+                                                            <?php
                                                                 $i++;
                                                                  }
                                                                 endforeach;
                                                          endif; ?>
-                                                            
+
                                                          <?php for(;$i<=15;$i++): ?>
                                                     <div class="drag" id="div<?php echo $i; ?>" style="cursor: move;position: absolute;left: 200px;top: 200px;"></div>
-                                                    <?php endfor; ?>                                                       
-                                                       
+                                                    <?php endfor; ?>
+
 
                                                          <h3>ZOOM</h3>
                                                      </div>
@@ -228,7 +228,7 @@
                                                     <form>
 
                                                         <div class="form-group">
-                                                            <input  name="logo_resize_back" id="logo_resize" min="5" max="1000" value="30" type="range">
+                                                            <input  name="logo_resize_back" id="logo_resize_back" min="5" max="1000" value="30" type="range">
                                                         </div>
 
 
@@ -554,7 +554,7 @@
 
                                                  </div>
                                          </section>
- 
+
                            <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
                             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                             <script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
@@ -686,8 +686,8 @@
                                     });
                                     $('#logo_resize_back').change(function(){
                                         var value = $( this ).val();
-                                        $('#logo').css("width",value);
-                                        $('#logo').css("height",value);
+                                        $('#logo_back').css("width",value);
+                                        $('#logo_back').css("height",value);
                                     });
                                     $('#font_plus_back').click(function(e)
                                     {
@@ -729,17 +729,21 @@
                                         var lamination=$("#lamination").val();
                                         var jsonObj=[];
                                         var design_item={};
-                                       
+
                                         design_item["dimension"]=dimension;
                                         design_item["paper"]=paper;
                                         design_item["lamination"]=lamination;
                                         design_item["design_id"]=design_id;
+                                        var logo_front=$("#logo").css("src");
+                                        var logo_back=$("#logo_back").css("src");
+                                        design_item["logo_front"]=logo_front;
+                                        design_item["logo_back"]=logo_back;
                                         var textDataJsonObj = [];
                                         $('#frontcard').children('div').each(function () {
 
                                             var text = $(this).text();
                                             if(text.trim() == "")
-                                                return;                                            
+                                                return;
                                             var font_size = $(this).css("font-size");
                                             var font_family = $(this).css("font-family");
                                             var color=$(this).css("color");
@@ -800,7 +804,53 @@
                                     });
                                 });
                             </script>
-                        
+
+<script type="text/javascript">
+$("form[name='icon_image']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: "<?php echo base_url(); ?>" + "index.php/product_details/upload_icon_image",
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (data) {
+                var src = "<?php echo base_url(); ?>uploads/"+ data;
+                $("#logo").attr("src",src);
+                $('#logo').css("visibility","visible");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+        e.preventDefault();
+    });
+</script>
+
+<script type="text/javascript">
+$("form[name='icon_image_back']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: "<?php echo base_url(); ?>" + "index.php/product_details/upload_icon_image",
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (data) {
+                var src = "<?php echo base_url(); ?>uploads/"+ data;
+                $("#logo_back").attr("src",src);
+                $('#logo_back').css("visibility","visible");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+        e.preventDefault();
+    });
+</script>
+                            
 <script type="text/javascript">
 
 window.onload = function() {

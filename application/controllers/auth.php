@@ -12,10 +12,12 @@
  * @author habibullaharaphat
  */
 class Auth extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         date_default_timezone_set('Asia/Dhaka');
     }
+
     //put your code here
     public function signup() {
         $this->load->model('users');
@@ -27,34 +29,33 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('password', "Password", 'required');
 
         if ($this->form_validation->run() == TRUE) {
-            
+
             /*
              * check captcha
              */
             $captcha_flag = true;
             $this->load->model('captchas');
             $captcha_id = $this->input->post('signup_captcha_id', TRUE);
-            $input_captcha_value = $this->input->post('signup_captcha',TRUE);
+            $input_captcha_value = $this->input->post('signup_captcha', TRUE);
             $captcha_id_from_session = $this->session->userdata('signup_captcha_id');
             $current_time = time();
-            
-            
+
+
             //echo $captcha_id." ".$captcha_id_from_session;
-            if(isset($captcha_id) == false || $captcha_id == false || $captcha_id != $captcha_id_from_session){
+            if (isset($captcha_id) == false || $captcha_id == false || $captcha_id != $captcha_id_from_session) {
                 $captcha_flag = false;
             }
             //var_dump($captcha_flag);
-            
+
             $captcha_data = $this->captchas->get($captcha_id);
-            if(isset($captcha_data['captcha_id']) == false){
+            if (isset($captcha_data['captcha_id']) == false) {
                 $captcha_flag = false;
-            }
-            else if($input_captcha_value != $captcha_data['word'] || $current_time - $captcha_data['captcha_time']>1200){
+            } else if ($input_captcha_value != $captcha_data['word'] || $current_time - $captcha_data['captcha_time'] > 1200) {
                 $captcha_flag = false;
             }
             //var_dump($captcha_flag);
-            
-            if($captcha_flag == false){
+
+            if ($captcha_flag == false) {
                 $this->session->set_flashdata('status', 'failed');
                 $this->session->set_flashdata('message', 'Please enter the text shown in the image correctly');
                 redirect('login');
@@ -62,8 +63,8 @@ class Auth extends CI_Controller {
             /*
              * check captcha end
              */
-            
-            
+
+
             $user['name'] = $this->input->post('name', TRUE);
             $user['email'] = $this->input->post('email', TRUE);
             $user['password'] = $this->input->post('password', TRUE);
@@ -117,27 +118,25 @@ class Auth extends CI_Controller {
             $captcha_flag = true;
             $this->load->model('captchas');
             $captcha_id = $this->input->post('login_captcha_id', TRUE);
-            $input_captcha_value = $this->input->post('login_captcha',TRUE);
+            $input_captcha_value = $this->input->post('login_captcha', TRUE);
             $captcha_id_from_session = $this->session->userdata('login_captcha_id');
             $current_time = time();
-            
-            
+
+
             //echo $captcha_id." ".$captcha_id_from_session;
-            if(isset($captcha_id) == false || $captcha_id == false || $captcha_id != $captcha_id_from_session){
+            if (isset($captcha_id) == false || $captcha_id == false || $captcha_id != $captcha_id_from_session) {
                 $captcha_flag = false;
             }
-            
+
             $captcha_data = $this->captchas->get($captcha_id);
-            if(isset($captcha_data['captcha_id']) == false){
+            if (isset($captcha_data['captcha_id']) == false) {
+                $captcha_flag = false;
+            } else if ($input_captcha_value != $captcha_data['word'] || $current_time - $captcha_data['captcha_time'] > 1200) {
                 $captcha_flag = false;
             }
-            
-            else if($input_captcha_value != $captcha_data['word'] || $current_time - $captcha_data['captcha_time']>1200){
-                $captcha_flag = false;
-            }
-           // var_dump($captcha_flag);
-            
-            if($captcha_flag == false){
+            // var_dump($captcha_flag);
+
+            if ($captcha_flag == false) {
                 $this->session->set_flashdata('status', 'failed');
                 $this->session->set_flashdata('message', 'Please enter the text shown in the image correctly');
                 redirect('login');
@@ -145,13 +144,13 @@ class Auth extends CI_Controller {
             /*
              * check captcha end
              */
-            
-            
+
+
             $this->load->model('users');
             if ($this->users->login($credentials) == TRUE) {
                 $user_data = $this->users->get_user_by_email($credentials['email']);
 
-                
+
 
                 $auth_data = array(
                     'user_id' => $user_data['id'],
@@ -163,20 +162,15 @@ class Auth extends CI_Controller {
                 );
                 $this->session->set_userdata($auth_data);
 
+                $design_id_test = $this->session->userdata("design_id_test");
 
 
-//                if (isset($design_id)) {
-//                    $arr = array(
-//                        'user_id' => $user_data['id']
-//                    );
-//
-//                    $this->db->where('design_id', $design_id);
-//                    $this->db->update('design', $arr);
-//                }
-                    redirect('myCards');
-             
-            }
-            else {
+                if (isset($design_id_test)) {
+                    $this->load->model('products');
+                    $this->products->save_design_user($user_data['id'], $design_id_test);
+                }
+                redirect('myCards');
+            } else {
                 $this->session->set_flashdata('status', 'failed');
                 $this->session->set_flashdata('message', 'Wrong Email or Password');
             }
@@ -207,7 +201,7 @@ class Auth extends CI_Controller {
             $this->users->insert($user);
 
             $user_data = $this->users->get_user_by_fb_id($user['fb_id']);
-          
+
             $auth_data = array(
                 'user_id' => $user_data['id'],
                 'email' => $user_data['email'],
@@ -218,10 +212,15 @@ class Auth extends CI_Controller {
             );
 
             $this->session->set_userdata($auth_data);
+            $design_id_test = $this->session->userdata("design_id_test");
 
-             
-                    redirect('myCards');
-        
+
+            if (isset($design_id_test)) {
+                $this->load->model('products');
+                $this->products->save_design_user($user_data['id'], $design_id_test);
+            }
+
+            redirect('myCards');
         } else {
             redirect("login");
         }
@@ -255,11 +254,11 @@ class Auth extends CI_Controller {
         var_dump($accessToken);
     }
 
-    public function logout()
-    {
+    public function logout() {
         $this->load->library('session');
         $this->session->sess_destroy();
-        redirect('home');   
+        redirect('home');
     }
+
 }
 

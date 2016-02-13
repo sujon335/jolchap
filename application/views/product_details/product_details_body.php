@@ -21,8 +21,16 @@
                                             <div class="brands_products"><!--brands_products-->
                                                 <h2>Front Texts</h2>
                                                 <div class="brands-name">
-
-                                                    <form>
+                                                    <form enctype="multipart/form-data" id="icon_image" name="icon_image">
+                                                        <label>Upload image</label>
+                                                        <div class="form-group">
+                                                        <input type="file" id="front_side" name="card_icon">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-success">Upload</button>
+                                                        </div>
+                                                    </form>
+                                                    <form >
 
                                                         <div class="form-group">
                                                             <input  name="logo_resize" id="logo_resize" min="5" max="1000" value="30" type="range">
@@ -184,8 +192,8 @@
                                             <div id="myNicPanel" >
                                                 <div class="view-product" id="frontcard" style="position:relative">
                                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $product_details['front_side']; ?>" alt="" />
-                                                    <img class="drag" id="logo" src="http://bakerstreetbabes.com/wp-content/uploads/2013/07/intel-company-logo-png-hd-sk.png"
-                                                         alt="" style="cursor: move;position: absolute;left: 10px;top: 20px;height:60px; width: 60px;">
+                                                    <img class="drag" id="logo"  src=""
+                                                         alt="" style="cursor: move;position: absolute;left: 10px;top: 20px;height:60px; width: 60px; visibility: hidden;">
 
                                                          <?php
                                                          $i = 1;
@@ -225,11 +233,19 @@
                                             <div class="brands_products"><!--brands_products-->
                                                 <h2>Back Texts</h2>
                                                 <div class="brands-name">
-
+                                                    <form enctype="multipart/form-data" id="icon_image_back" name="icon_image_back">
+                                                        <label>Upload image</label>
+                                                        <div class="form-group">
+                                                        <input type="file" id="front_side" name="card_icon">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-success">Upload</button>
+                                                        </div>
+                                                    </form>
                                                     <form>
 
                                                         <div class="form-group">
-                                                            <input  name="logo_resize_back" id="logo_resize" min="5" max="1000" value="30" type="range">
+                                                            <input  name="logo_resize_back" id="logo_resize_back" min="5" max="1000" value="30" type="range">
                                                         </div>
 
 
@@ -388,8 +404,8 @@
                                             <div id="myNicPanel" >
                                                 <div class="view-product" id="backcard" style="position:relative">
                                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $product_details['back_side']; ?>" alt="" />
-                                                    <img class="drag" id="logo" src="http://bakerstreetbabes.com/wp-content/uploads/2013/07/intel-company-logo-png-hd-sk.png"
-                                                         alt="" style="cursor: move;position: absolute;left: 10px;top: 20px;height:60px; width: 60px;">
+                                                    <img class="drag" id="logo_back" src=""
+                                                         alt="" style="cursor: move;position: absolute; visibility: hidden;left: 10px;top: 20px;height:60px; width: 60px;">
 
                                                          <?php
                                                          $i = 1;
@@ -680,8 +696,8 @@
                                     });
                                     $('#logo_resize_back').change(function(){
                                         var value = $( this ).val();
-                                        $('#logo').css("width",value);
-                                        $('#logo').css("height",value);
+                                        $('#logo_back').css("width",value);
+                                        $('#logo_back').css("height",value);
                                     });
                                     $('#font_plus_back').click(function(e)
                                     {
@@ -726,7 +742,10 @@
                                         design_item["dimension"]=dimension;
                                         design_item["paper"]=paper;
                                         design_item["lamination"]=lamination;
-
+                                        var logo_front=$("#logo").css("src");
+                                        var logo_back=$("#logo_back").css("src");
+                                        design_item["logo_front"]=logo_front;
+                                        design_item["logo_back"]=logo_back;
                                         var textDataJsonObj = [];
                                         $('#frontcard').children('div').each(function () {
 
@@ -797,8 +816,8 @@
                                 });
                             </script>
 
-                            
-<!--                            <script type="text/javascript">
+
+                            <script type="text/javascript">
 
                                 // Ajax post
                                 $(document).ready(function() {
@@ -815,7 +834,10 @@
                                         design_item["dimension"]=dimension;
                                         design_item["paper"]=paper;
                                         design_item["lamination"]=lamination;
-
+                                        var logo_front=$("#logo").css("src");
+                                        var logo_back=$("#logo_back").css("src");
+                                        design_item["logo_front"]=logo_front;
+                                        design_item["logo_back"]=logo_back;
                                         var textDataJsonObj = [];
                                         $('#frontcard').children('div').each(function () {
 
@@ -861,7 +883,7 @@
                                         });
 
 
-                                        design_item["card_texts_fornt"]=textDataJsonObj;
+                                        design_item["card_texts_front"]=textDataJsonObj;
                                         design_item["card_texts_back"]=backtextDataJsonObj;
                                         jsonObj.push(design_item);
                                         var jsonString=JSON.stringify(jsonObj);
@@ -869,19 +891,67 @@
                                         alert(jsonString);
 
 
-//                                        jQuery.ajax({
-//                                            type: "POST",
-//                                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_temp",
-//                data:  {card_data: jsonString},
-//                success: function(data) {
-//                    alert('success json data: '+data);
-//                }
-//            });
+                                        jQuery.ajax({
+                                            type: "POST",
+                                            url: "<?php echo base_url(); ?>" + "index.php/product_details/save_design_temp",
+                data:  {card_data: jsonString},
+                success: function(data) {
+                    alert('success json data: '+data);
+                }
+            });
              
         });
     });
 
 </script>
+
+
+<script type="text/javascript">
+$("form[name='icon_image']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: "<?php echo base_url(); ?>" + "index.php/product_details/upload_icon_image",
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (data) {
+                var src = "<?php echo base_url(); ?>uploads/"+ data;
+                $("#logo").attr("src",src);
+                $('#logo').css("visibility","visible");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+        e.preventDefault();
+    });
+</script>
+
+<script type="text/javascript">
+$("form[name='icon_image_back']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: "<?php echo base_url(); ?>" + "index.php/product_details/upload_icon_image",
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (data) {
+                var src = "<?php echo base_url(); ?>uploads/"+ data;
+                $("#logo_back").attr("src",src);
+                $('#logo_back').css("visibility","visible");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+        e.preventDefault();
+    });
+</script>
+                            
 <script type="text/javascript">
 
 window.onload = function() {
@@ -934,4 +1004,5 @@ var Detector = function() {
 };
 
 
-</script>-->
+</script>
+
