@@ -46,9 +46,101 @@
                                                         <div class="form-group">
                                                             <select  selected="selected" class="font_family wbfd_front_multiple_selected_font form-control" id="font_select" data-id="1" style="width: 150px;">
                                                                 <option value="selectFont">Select Font</option>
+                                                                                                   <option style="font-family:Agency FB;" value="Agency FB">Agency FB</option>
+                                                                <option style="font-family:Adobe Devanagari;" value="Adobe Devanagari">Adobe Devanagari</option>
+                                                                <option style="font-family:Aharoni; " value="Aharoni">Aharoni</option>
+                                                                <option style="font-family:Algerian;" value="Algerian">Algerian</option>
+                                                                <option style="font-family:Andalus;" value="Andalus">Andalus</option>
+                                                                <option style="font-family:Angsana New;" value="Angsana New">Angsana New</option>
                                                                 <option style="font-family:Arial;" value="Arial">Arial</option>
                                                                 <option style="font-family:Arial Black;" value="Arial Black">Arial Black</option>
+                                                                <option style="font-family:Aparajita;" value="Aparajita">Aparajita</option>
+                                                                <option style="font-family:Arial Rounded MT Bold;" value="Arial Rounded MT Bold">Arial Rounded MT Bold</option>
+                                                                <option style="font-family:Arabic Typesetting;" value="Arabic Typesetting">Arabic Typesetting</option>
+                                                                <option style="font-family:DaunPenh;" value="DaunPenh">DaunPenh</option>
+                                                                <option style="font-family:David;" value="David">David</option>
+                                                                <option style="font-family:DFKai-SB;" value="DFKai-SB">DFKai-SB</option>
+                                                                <option style="font-family:Dialog;" value="Dialog">Dialog</option>
                                                                 <option style="font-family:Comic Sans MS; " value="Comic Sans MS">Comic Sans MS</option>
+                                                                <option style="font-family:Calibri;" value="Calibri">Calibri</option>
+                                                                <option style="font-family:Cambria;" value="Cambria">Cambria</option>
+                                                                <option style="font-family:Century;" value="Century">Century</option>
+                                                                <option style="font-family:KaiTi;" value="KaiTi">KaiTi</option>
+                                                                <option style="font-family:Kalinga;" value="Kalinga">Kalinga</option>
+                                                                <option style="font-family:Khmer UI;" value="Khmer UI">Khmer UI</option>
+                                                                <option style="font-family:KodchiangUPC_;" value="KodchiangUPC_">KodchiangUPC_</option>
+                                                                <option style="font-family:Kartika;" value="Kartika">Kartika</option>
+                                                                <option style="font-family:Kristen ITC;" value="Kristen ITC">Kristen ITC</option>
+                                                                <option style="font-family:Kunstler Script;" value="Kunstler Script">Kunstler Script</option>
+                                                                <option style="font-family:Kalpurush;" value="Kalpurush">Kalpurush</option>
+                                                                <option style="font-family:Latha;" value="Latha">Latha</option>
+                                                                <option style="font-family:Levenim MT;" value="Levenim MT">Levenim MT</option>
+                                                                <option style="font-family:LilyUPC;" value="LilyUPC">LilyUPC</option>
+                                                                <option style="font-family:Leelawadee;" value="Leelawadee">Leelawadee</option>
+                                                                <option style="font-family:Lucida Fax;" value="Lucida Fax">Lucida Fax</option>
+                                                                <option style="font-family:Magneto;" value="Magneto">Magneto</option>
+                                                                <option style="font-family:Mangal;" value="Mangal">Mangal</option>
+                                                                <option style="font-family:Marlett;" value="Marlett">Marlett</option>
+                                                                <option style="font-family:Meiryo;" value="Meiryo">Meiryo</option>
+                                                                <option style="font-family:Narkisim;" value="Narkisim">Narkisim</option>
+                                                                <option style="font-family:NSimSun;" value="NSimSun">NSimSun</option>
+                                                                <option style="font-family:Nyala;" value="Nyala">Nyala</option>
+                                                                <option style="font-family:opensans-bold;" value="opensans-bold">Opensans-bold</option>
+                                                                <option style="font-family:opensans-bolditalic;" value="opensans-bolditalic">Opensans-bolditalic</option>
+                                                                <option style="font-family:opensans-extrabold;" value="opensans-extrabold">Opensans-extrabold</option>
+                                                                <option style="font-family:opensans-extrabolditalic;" value="opensans-extrabolditalic">Opensans-extrabolditalic</option>
+                                                                <option style="font-family:opensans-italic;" value="opensans-italic">Opensans-italic</option>
+                                                                <option style="font-family:opensans-light;" value="opensans-light">Opensans-light</option>
+                                                                <option style="font-family:opensans-regular;" value="opensans-regular">Opensans-regular</option>
+                                                                <option style="font-family:opensans-semibold;" value="opensans-semibold">Opensans-semibold</option>
+                                                                <option style="font-family:nexa bold.otf;" value="nexa bold.otf">Nexa bold.otf</option>
+                                                                <option style="font-family:opensans-semibolditalic;" value="opensans-semibolditalic">Opensans-semibolditalic</option>
+                                                                <option style="font-family:opensans-lightitalic;" value="opensans-lightitalic">Opensans-lightitalic</option>
+                                                                <option style="font-family:prime regular.otf;" value="prime regular.otf">Prime regular.otf</option>
+                                                                <option style="font-family:roboto-blackitalic;" value="roboto-blackitalic">Roboto-blackitalic</option>
+                                                                <option style="font-family:roboto-bold;" value="roboto-bold">Roboto-bold</option>
+                                                                <option style="font-family:roboto-bolditalic;" value="roboto-bolditalic">Roboto-bolditalic</option>
+                                                                <option style="font-family:prime light.otf;" value="prime light.otf">Prime light.otf</option>
+                                                                <option style="font-family:roboto-thinitalic;" value="roboto-thinitalic">Roboto-thinitalic</option>
+                                                                <option style="font-family:roboto-italic;" value="roboto-italic">Roboto-italic</option>
+                                                                <option style="font-family:robotocondensed-bold;" value="robotocondensed-bold">Robotocondensed-bold</option>
+                                                                <option style="font-family:roboto-mediumitalic;" value="roboto-mediumitalic">Roboto-mediumitalic</option>
+                                                                <option style="font-family:robotocondensed-bolditalic;" value="robotocondensed-bolditalic">Robotocondensed-bolditalic</option>
+                                                                <option style="font-family:roboto-lightitalic;" value="roboto-lightitalic">Roboto-lightitalic</option>
+                                                                <option style="font-family:roboto-light;" value="roboto-light">Roboto-light</option>
+                                                                <option style="font-family:robotocondensed-light;" value="robotocondensed-light">Robotocondensed-light</option>
+                                                                <option style="font-family:roboto-regular;" value="roboto-regular">Roboto-regular</option>
+                                                                <option style="font-family:robotocondensed-regular;" value="robotocondensed-regular">Robotocondensed-regular</option>
+                                                                <option style="font-family:sf outer limits distorted;" value="sf outer limits distorted">Sf outer limits distorted</option>
+                                                                <option style="font-family:robotocondensed-italic;" value="robotocondensed-italic">Robotocondensed-italic</option>
+                                                                <option style="font-family:roboto-medium;" value="roboto-medium">Roboto-medium</option>
+                                                                <option style="font-family:sf outer limits distupright;" value="sf outer limits distupright">Sf outer limits distupright</option>
+                                                                <option style="font-family:sf outer limits extupright;" value="sf outer limits extupright">Sf outer limits extupright</option>
+                                                                <option style="font-family:sf outer limits upright;" value="sf outer limits upright">Sf outer limits upright</option>
+                                                                <option style="font-family:sf outer limits;" value="sf outer limits">Sf outer limits</option>
+                                                                <option style="font-family:sreda.otf;" value="sreda.otf">Sreda.otf</option>
+                                                                <option style="font-family:sreda;" value="sreda">Sreda</option>
+                                                                <option style="font-family:subadai;" value="subadai">Subadai</option>
+                                                                <option style="font-family:subadai3d;" value="subadai3d">Subadai3d</option>
+                                                                <option style="font-family:subadai3dital;" value="subadai3dital">Subadai3dital</option>
+                                                                <option style="font-family:subadaibold;" value="subadaibold">Subadaibold</option>
+                                                                <option style="font-family:subadaiboldital;" value="subadaiboldital">Subadaiboldital</option>
+                                                                <option style="font-family:sf outer limits extended;" value="sf outer limits extended">Sf outer limits extended</option>
+                                                                <option style="font-family:subadaicond;" value="subadaicond">Subadaicond</option>
+                                                                <option style="font-family:subadaicondital;" value="subadaicondital">Subadaicondital</option>
+                                                                <option style="font-family:subadaiexpand;" value="subadaiexpand">Subadaiexpand</option>
+                                                                <option style="font-family:subadaiexpandital;" value="subadaiexpandital">Subadaiexpandital</option>
+                                                                <option style="font-family:subadaiital;" value="subadaiital">Subadaiital</option>
+                                                                <option style="font-family:subadailaser;" value="subadailaser">Subadailaser</option>
+                                                                <option style="font-family:subadailaserital;" value="subadailaserital">Subadailaserital</option>
+                                                                <option style="font-family:subadaileft;" value="subadaileft">Subadaileft</option>
+                                                                <option style="font-family:vanity_cre;" value="vanity_cre">Vanity_cre</option>
+                                                                <option style="font-family:jotione-regular;" value="jotione-regular">Jotione-regular</option>
+                                                                <option style="font-family:komtitwr;" value="komtitwr">Komtitwr</option>
+                                                                <option style="font-family:roboto-black;" value="roboto-black">Roboto-black</option>
+                                                                <option style="font-family:stylish fonts new.zip;" value="stylish fonts new.zip">Stylish fonts new.zip</option>
+                                                                <option style="font-family:robotocondensed-lightitalic;" value="robotocondensed-lightitalic">Robotocondensed-lightitalic</option>
+                                                                <option style="font-family:roboto-thin;" value="roboto-thin">Roboto-thin</option>
                                                                 <option style="font-family:Impact;" value="Impact">Impact</option>
                                                                 <option style="font-family:Lucida Sans Unicode;" value="Lucida Sans Unicode">Lucida Sans Unicode</option>
                                                                 <option style="font-family:Tahoma;" value="Tahoma">Tahoma</option>
@@ -59,7 +151,7 @@
                                                                 <option style="font-family:Georgia;" value="Georgia">Georgia</option>
                                                                 <option style="font-family:Palatino Linotype;" value="Palatino Linotype">Palatino Linotype</option>
                                                                 <option style="font-family:Times New Roman;" value="Times New Roman">Times New Roman</option>
-                                   
+                             
                                                             </select>
                                                         </div>
 
@@ -192,9 +284,101 @@
                                                                     <div class="form-group">
                                                                         <select  selected="selected" class="font_family wbfd_front_multiple_selected_font form-control" id="font_select_back" data-id="1" style="width: 150px;">
                                                                       <option value="selectFont">Select Font</option>
+                                                                                                            <option style="font-family:Agency FB;" value="Agency FB">Agency FB</option>
+                                                                <option style="font-family:Adobe Devanagari;" value="Adobe Devanagari">Adobe Devanagari</option>
+                                                                <option style="font-family:Aharoni; " value="Aharoni">Aharoni</option>
+                                                                <option style="font-family:Algerian;" value="Algerian">Algerian</option>
+                                                                <option style="font-family:Andalus;" value="Andalus">Andalus</option>
+                                                                <option style="font-family:Angsana New;" value="Angsana New">Angsana New</option>
                                                                 <option style="font-family:Arial;" value="Arial">Arial</option>
                                                                 <option style="font-family:Arial Black;" value="Arial Black">Arial Black</option>
+                                                                <option style="font-family:Aparajita;" value="Aparajita">Aparajita</option>
+                                                                <option style="font-family:Arial Rounded MT Bold;" value="Arial Rounded MT Bold">Arial Rounded MT Bold</option>
+                                                                <option style="font-family:Arabic Typesetting;" value="Arabic Typesetting">Arabic Typesetting</option>
+                                                                <option style="font-family:DaunPenh;" value="DaunPenh">DaunPenh</option>
+                                                                <option style="font-family:David;" value="David">David</option>
+                                                                <option style="font-family:DFKai-SB;" value="DFKai-SB">DFKai-SB</option>
+                                                                <option style="font-family:Dialog;" value="Dialog">Dialog</option>
                                                                 <option style="font-family:Comic Sans MS; " value="Comic Sans MS">Comic Sans MS</option>
+                                                                <option style="font-family:Calibri;" value="Calibri">Calibri</option>
+                                                                <option style="font-family:Cambria;" value="Cambria">Cambria</option>
+                                                                <option style="font-family:Century;" value="Century">Century</option>
+                                                                <option style="font-family:KaiTi;" value="KaiTi">KaiTi</option>
+                                                                <option style="font-family:Kalinga;" value="Kalinga">Kalinga</option>
+                                                                <option style="font-family:Khmer UI;" value="Khmer UI">Khmer UI</option>
+                                                                <option style="font-family:KodchiangUPC_;" value="KodchiangUPC_">KodchiangUPC_</option>
+                                                                <option style="font-family:Kartika;" value="Kartika">Kartika</option>
+                                                                <option style="font-family:Kristen ITC;" value="Kristen ITC">Kristen ITC</option>
+                                                                <option style="font-family:Kunstler Script;" value="Kunstler Script">Kunstler Script</option>
+                                                                <option style="font-family:Kalpurush;" value="Kalpurush">Kalpurush</option>
+                                                                <option style="font-family:Latha;" value="Latha">Latha</option>
+                                                                <option style="font-family:Levenim MT;" value="Levenim MT">Levenim MT</option>
+                                                                <option style="font-family:LilyUPC;" value="LilyUPC">LilyUPC</option>
+                                                                <option style="font-family:Leelawadee;" value="Leelawadee">Leelawadee</option>
+                                                                <option style="font-family:Lucida Fax;" value="Lucida Fax">Lucida Fax</option>
+                                                                <option style="font-family:Magneto;" value="Magneto">Magneto</option>
+                                                                <option style="font-family:Mangal;" value="Mangal">Mangal</option>
+                                                                <option style="font-family:Marlett;" value="Marlett">Marlett</option>
+                                                                <option style="font-family:Meiryo;" value="Meiryo">Meiryo</option>
+                                                                <option style="font-family:Narkisim;" value="Narkisim">Narkisim</option>
+                                                                <option style="font-family:NSimSun;" value="NSimSun">NSimSun</option>
+                                                                <option style="font-family:Nyala;" value="Nyala">Nyala</option>
+                                                                <option style="font-family:opensans-bold;" value="opensans-bold">Opensans-bold</option>
+                                                                <option style="font-family:opensans-bolditalic;" value="opensans-bolditalic">Opensans-bolditalic</option>
+                                                                <option style="font-family:opensans-extrabold;" value="opensans-extrabold">Opensans-extrabold</option>
+                                                                <option style="font-family:opensans-extrabolditalic;" value="opensans-extrabolditalic">Opensans-extrabolditalic</option>
+                                                                <option style="font-family:opensans-italic;" value="opensans-italic">Opensans-italic</option>
+                                                                <option style="font-family:opensans-light;" value="opensans-light">Opensans-light</option>
+                                                                <option style="font-family:opensans-regular;" value="opensans-regular">Opensans-regular</option>
+                                                                <option style="font-family:opensans-semibold;" value="opensans-semibold">Opensans-semibold</option>
+                                                                <option style="font-family:nexa bold.otf;" value="nexa bold.otf">Nexa bold.otf</option>
+                                                                <option style="font-family:opensans-semibolditalic;" value="opensans-semibolditalic">Opensans-semibolditalic</option>
+                                                                <option style="font-family:opensans-lightitalic;" value="opensans-lightitalic">Opensans-lightitalic</option>
+                                                                <option style="font-family:prime regular.otf;" value="prime regular.otf">Prime regular.otf</option>
+                                                                <option style="font-family:roboto-blackitalic;" value="roboto-blackitalic">Roboto-blackitalic</option>
+                                                                <option style="font-family:roboto-bold;" value="roboto-bold">Roboto-bold</option>
+                                                                <option style="font-family:roboto-bolditalic;" value="roboto-bolditalic">Roboto-bolditalic</option>
+                                                                <option style="font-family:prime light.otf;" value="prime light.otf">Prime light.otf</option>
+                                                                <option style="font-family:roboto-thinitalic;" value="roboto-thinitalic">Roboto-thinitalic</option>
+                                                                <option style="font-family:roboto-italic;" value="roboto-italic">Roboto-italic</option>
+                                                                <option style="font-family:robotocondensed-bold;" value="robotocondensed-bold">Robotocondensed-bold</option>
+                                                                <option style="font-family:roboto-mediumitalic;" value="roboto-mediumitalic">Roboto-mediumitalic</option>
+                                                                <option style="font-family:robotocondensed-bolditalic;" value="robotocondensed-bolditalic">Robotocondensed-bolditalic</option>
+                                                                <option style="font-family:roboto-lightitalic;" value="roboto-lightitalic">Roboto-lightitalic</option>
+                                                                <option style="font-family:roboto-light;" value="roboto-light">Roboto-light</option>
+                                                                <option style="font-family:robotocondensed-light;" value="robotocondensed-light">Robotocondensed-light</option>
+                                                                <option style="font-family:roboto-regular;" value="roboto-regular">Roboto-regular</option>
+                                                                <option style="font-family:robotocondensed-regular;" value="robotocondensed-regular">Robotocondensed-regular</option>
+                                                                <option style="font-family:sf outer limits distorted;" value="sf outer limits distorted">Sf outer limits distorted</option>
+                                                                <option style="font-family:robotocondensed-italic;" value="robotocondensed-italic">Robotocondensed-italic</option>
+                                                                <option style="font-family:roboto-medium;" value="roboto-medium">Roboto-medium</option>
+                                                                <option style="font-family:sf outer limits distupright;" value="sf outer limits distupright">Sf outer limits distupright</option>
+                                                                <option style="font-family:sf outer limits extupright;" value="sf outer limits extupright">Sf outer limits extupright</option>
+                                                                <option style="font-family:sf outer limits upright;" value="sf outer limits upright">Sf outer limits upright</option>
+                                                                <option style="font-family:sf outer limits;" value="sf outer limits">Sf outer limits</option>
+                                                                <option style="font-family:sreda.otf;" value="sreda.otf">Sreda.otf</option>
+                                                                <option style="font-family:sreda;" value="sreda">Sreda</option>
+                                                                <option style="font-family:subadai;" value="subadai">Subadai</option>
+                                                                <option style="font-family:subadai3d;" value="subadai3d">Subadai3d</option>
+                                                                <option style="font-family:subadai3dital;" value="subadai3dital">Subadai3dital</option>
+                                                                <option style="font-family:subadaibold;" value="subadaibold">Subadaibold</option>
+                                                                <option style="font-family:subadaiboldital;" value="subadaiboldital">Subadaiboldital</option>
+                                                                <option style="font-family:sf outer limits extended;" value="sf outer limits extended">Sf outer limits extended</option>
+                                                                <option style="font-family:subadaicond;" value="subadaicond">Subadaicond</option>
+                                                                <option style="font-family:subadaicondital;" value="subadaicondital">Subadaicondital</option>
+                                                                <option style="font-family:subadaiexpand;" value="subadaiexpand">Subadaiexpand</option>
+                                                                <option style="font-family:subadaiexpandital;" value="subadaiexpandital">Subadaiexpandital</option>
+                                                                <option style="font-family:subadaiital;" value="subadaiital">Subadaiital</option>
+                                                                <option style="font-family:subadailaser;" value="subadailaser">Subadailaser</option>
+                                                                <option style="font-family:subadailaserital;" value="subadailaserital">Subadailaserital</option>
+                                                                <option style="font-family:subadaileft;" value="subadaileft">Subadaileft</option>
+                                                                <option style="font-family:vanity_cre;" value="vanity_cre">Vanity_cre</option>
+                                                                <option style="font-family:jotione-regular;" value="jotione-regular">Jotione-regular</option>
+                                                                <option style="font-family:komtitwr;" value="komtitwr">Komtitwr</option>
+                                                                <option style="font-family:roboto-black;" value="roboto-black">Roboto-black</option>
+                                                                <option style="font-family:stylish fonts new.zip;" value="stylish fonts new.zip">Stylish fonts new.zip</option>
+                                                                <option style="font-family:robotocondensed-lightitalic;" value="robotocondensed-lightitalic">Robotocondensed-lightitalic</option>
+                                                                <option style="font-family:roboto-thin;" value="roboto-thin">Roboto-thin</option>
                                                                 <option style="font-family:Impact;" value="Impact">Impact</option>
                                                                 <option style="font-family:Lucida Sans Unicode;" value="Lucida Sans Unicode">Lucida Sans Unicode</option>
                                                                 <option style="font-family:Tahoma;" value="Tahoma">Tahoma</option>
@@ -204,8 +388,8 @@
                                                                 <option style="font-family:Lucida Console;" value="Lucida Console">Lucida Console</option>
                                                                 <option style="font-family:Georgia;" value="Georgia">Georgia</option>
                                                                 <option style="font-family:Palatino Linotype;" value="Palatino Linotype">Palatino Linotype</option>
-                                                                <option style="font-family:Times New Roman;" value="Times New Roman">Times New Roman</option>                           <option style="font-family:Agency FB;" value="Agency FB">Agency FB</option>
-                                                
+                                                                <option style="font-family:Times New Roman;" value="Times New Roman">Times New Roman</option>
+                             
                                                                         </select>
                                                                     </div>
 
@@ -759,54 +943,73 @@
 
 <script type="text/javascript">
 
-    window.onload = function() {
-        var detective = new Detector();
-        //alert(detective.detect('arial'));
-    };
+$(document).ready(function() {
+var detective = new Detector();
 
-    var Detector = function() {
-        // a font will be compared against all the three default fonts.
-        // and if it doesn't match all 3 then that font is not available.
-        var baseFonts = ['monospace', 'sans-serif', 'serif'];
+$('#font_select').children('option').each(function () {
+    var font=$(this).val();
+    if(!detective.detect(font))
+    {
+        $(this).remove();
+    }
 
-        //we use m or w because these two characters take up the maximum width.
-        // And we use a LLi so that the same matching fonts can get separated
-        var testString = "mmmmmmmmmmlli";
+});
+$('#font_select_back').children('option').each(function () {
+    var font=$(this).val();
+    if(!detective.detect(font))
+    {
+        $(this).remove();
+    }
 
-        //we test using 72px font size, we may use any size. I guess larger the better.
-        var testSize = '72px';
+});
 
-        var h = document.getElementsByTagName("body")[0];
+// alert(detective.detect('Impact'));
+});
 
-        // create a SPAN in the document to get the width of the text we use to test
-        var s = document.createElement("span");
-        s.style.fontSize = testSize;
-        s.innerHTML = testString;
-        var defaultWidth = {};
-        var defaultHeight = {};
-        for (var index in baseFonts) {
-            //get the default width for the three base fonts
-            s.style.fontFamily = baseFonts[index];
-            h.appendChild(s);
-            defaultWidth[baseFonts[index]] = s.offsetWidth; //width for the default font
-            defaultHeight[baseFonts[index]] = s.offsetHeight; //height for the defualt font
-            h.removeChild(s);
-        }
+var Detector = function() {
+// a font will be compared against all the three default fonts.
+// and if it doesn't match all 3 then that font is not available.
+var baseFonts = ['monospace', 'sans-serif', 'serif'];
 
-        function detect(font) {
-            var detected = false;
-            for (var index in baseFonts) {
-                s.style.fontFamily = font + ',' + baseFonts[index]; // name of the font along with the base font for fallback.
-                h.appendChild(s);
-                var matched = (s.offsetWidth != defaultWidth[baseFonts[index]] || s.offsetHeight != defaultHeight[baseFonts[index]]);
-                h.removeChild(s);
-                detected = detected || matched;
-            }
-            return detected;
-        }
+//we use m or w because these two characters take up the maximum width.
+// And we use a LLi so that the same matching fonts can get separated
+var testString = "mmmmmmmmmmlli";
 
-        this.detect = detect;
-    };
+//we test using 72px font size, we may use any size. I guess larger the better.
+var testSize = '72px';
+
+var h = document.getElementsByTagName("body")[0];
+
+// create a SPAN in the document to get the width of the text we use to test
+var s = document.createElement("span");
+s.style.fontSize = testSize;
+s.innerHTML = testString;
+var defaultWidth = {};
+var defaultHeight = {};
+for (var index in baseFonts) {
+    //get the default width for the three base fonts
+    s.style.fontFamily = baseFonts[index];
+    h.appendChild(s);
+    defaultWidth[baseFonts[index]] = s.offsetWidth; //width for the default font
+    defaultHeight[baseFonts[index]] = s.offsetHeight; //height for the defualt font
+    h.removeChild(s);
+}
+
+function detect(font) {
+    var detected = false;
+    for (var index in baseFonts) {
+        s.style.fontFamily = font + ',' + baseFonts[index]; // name of the font along with the base font for fallback.
+        h.appendChild(s);
+        var matched = (s.offsetWidth != defaultWidth[baseFonts[index]] || s.offsetHeight != defaultHeight[baseFonts[index]]);
+        h.removeChild(s);
+        detected = detected || matched;
+    }
+    return detected;
+}
+
+this.detect = detect;
+};
 
 
 </script>
+
